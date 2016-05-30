@@ -557,7 +557,7 @@ nav i.icon-basic-eye {
 	margin-right: 5px;
 }
 .navbar-inner {
-	background-color: transparent;
+	background-color: #FFF;
 	-webkit-transition: background-color 400ms linear;
 	-moz-transition: background-color 400ms linear;
 	-o-transition: background-color 400ms linear;
@@ -772,7 +772,7 @@ html.sb-init.sb-active.sb-active-right #projects .filter-item div a {
 	display: inline-block;
 	font-weight: 600;
 	font-style: normal;
-	color: #666;
+	color: #999;
 	cursor: pointer;
 	line-height: 20px;
 	padding: 3px 10px; /* Creates an even padding the same size as your font. */
@@ -852,13 +852,13 @@ span.sb-caret { /* Caret Down */
 	padding-top: 0;
 }
 #hero h2 {
-	color: #151515;
+	color: #fff;
 	margin-bottom: 20px;
 	display: inline-block;
 	padding: 14px;
 }
 #hero p {
-	color: #333;
+	color: #eee;
 	font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	font-size: 18px;
 	display: inline-block;
@@ -1530,7 +1530,7 @@ hr.byline-accent {
 * Statement section, (homepage)
 ******************************************************* */
 #statement {
-	background-color: #fff;
+	background-color: #151515;
 	padding: 60px 0 20px;
 }
 
@@ -1538,7 +1538,7 @@ hr.byline-accent {
 	font-family: 'Georgia', serif, Helvetica, "Helvetica Neue", "Hiragino Sans GB", "Microsoft YaHei", "Source Han Sans CN", "WenQuanYi Micro Hei", Arial, sans-serif;
 	font-style: italic;
 	font-size: 20px;
-	color: #333;
+	color: #999999;
 }
 
 #statement i {
