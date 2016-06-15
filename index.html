@@ -266,6 +266,142 @@
             
               
                 
+                <a class="post-title-link" href="/2016/06/15/iOS8-TableView-自动算高/" itemprop="url">
+                  iOS8 TableView 自动算高
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-06-15T17:01:58+08:00" content="2016-06-15">
+              2016-06-15
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/skill/" itemprop="url" rel="index">
+                    <span itemprop="name">iOS技巧</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/06/15/iOS8-TableView-自动算高/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/15/iOS8-TableView-自动算高/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/06/15/iOS8-TableView-自动算高/" class="leancloud_visitors" data-flag-title="iOS8 TableView 自动算高">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>在iOS8及以上系统中,可以使用AutoLayout来设置cell，使得内容 撑起 Cell,而只需要将tableView的<code>rowHeight</code>属性设置为<code>UITableViewAutomaticDimension</code> 自动计算，然后使用</p>
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+return 50;
+}
+</code></pre><p>来设置一个估算的大致高度。</p>
+<p>结果在最下</p>
+<p>但我还是更习惯将行高缓存下来:<br>如果上面提到的你都做了，但是tableView:heightForRowAtIndexPath:的性能仍然慢的不可接受。非常不幸，你需要给行高做一些缓存（这是苹果的工程师们给出的改进建议）。大体的思路是，第一次计算时让自动布局引擎解析约束条件，然后将计算出的行高缓存起来，以后所有对该cell的高度的请求都返回缓存值。当然，关键还要确保任何会导致cell高度变化的情况发生时你都清除了缓存的行高——这通常发生在cell的内容变化时或其他重大事件发生时（比如用户调节了动态类型文本大小(Dynamic Type text size)的滑动条）。</p>
+<p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/06/02/iOS绘图思想/" itemprop="url">
                   iOS绘图思想
                 </a>
@@ -692,7 +828,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">2</span>
+              <span class="site-state-item-count">3</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -700,7 +836,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-count">2</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -709,7 +845,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>

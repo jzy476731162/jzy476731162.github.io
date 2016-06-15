@@ -4,6 +4,20 @@
   
     
     <entry>
+      <title><![CDATA[iOS8 TableView 自动算高]]></title>
+      <url>http://jzy476731162.github.io/2016/06/15/iOS8-TableView-%E8%87%AA%E5%8A%A8%E7%AE%97%E9%AB%98/</url>
+      <content type="html"><![CDATA[<p>在iOS8及以上系统中,可以使用AutoLayout来设置cell，使得内容 撑起 Cell,而只需要将tableView的<code>rowHeight</code>属性设置为<code>UITableViewAutomaticDimension</code> 自动计算，然后使用</p>
+<pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+return 50;
+}
+</code></pre><p>来设置一个估算的大致高度。</p>
+<p>结果在最下</p>
+<p>但我还是更习惯将行高缓存下来:<br>如果上面提到的你都做了，但是tableView:heightForRowAtIndexPath:的性能仍然慢的不可接受。非常不幸，你需要给行高做一些缓存（这是苹果的工程师们给出的改进建议）。大体的思路是，第一次计算时让自动布局引擎解析约束条件，然后将计算出的行高缓存起来，以后所有对该cell的高度的请求都返回缓存值。当然，关键还要确保任何会导致cell高度变化的情况发生时你都清除了缓存的行高——这通常发生在cell的内容变化时或其他重大事件发生时（比如用户调节了动态类型文本大小(Dynamic Type text size)的滑动条）。</p>
+<p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg" alt=""></p>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[iOS绘图思想]]></title>
       <url>http://jzy476731162.github.io/2016/06/02/iOS%E7%BB%98%E5%9B%BE%E6%80%9D%E6%83%B3/</url>
       <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html" target="_blank" rel="external">原文链接</a><br><!--[TOC]--></p>
