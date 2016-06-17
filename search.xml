@@ -10,7 +10,8 @@
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
 return 50;
 }
-</code></pre><p>来设置一个估算的大致高度。</p>
+</code></pre><a id="more"></a>
+<p>来设置一个估算的大致高度。</p>
 <p>结果在最下</p>
 <p>但我还是更习惯将行高缓存下来:<br>如果上面提到的你都做了，但是tableView:heightForRowAtIndexPath:的性能仍然慢的不可接受。非常不幸，你需要给行高做一些缓存（这是苹果的工程师们给出的改进建议）。大体的思路是，第一次计算时让自动布局引擎解析约束条件，然后将计算出的行高缓存起来，以后所有对该cell的高度的请求都返回缓存值。当然，关键还要确保任何会导致cell高度变化的情况发生时你都清除了缓存的行高——这通常发生在cell的内容变化时或其他重大事件发生时（比如用户调节了动态类型文本大小(Dynamic Type text size)的滑动条）。</p>
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg" alt=""></p>
@@ -28,8 +29,7 @@ return 50;
 <blockquote>
 <p>不是所有的UIkit类都是线程安全的。在主线程外的其他线程中执行绘画操作时请先检查文档。</p>
 </blockquote>
-<hr>
-<h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
 <p>除了立刻在屏幕上绘制，UIKit也允许你画到离屏的位图或者PDF图形的上下文中。当你在离屏上下文中绘制时，不是在一个view中绘制，也意味着在view的绘图周期中是不推荐这么做的(除非你随后取出图像并且在imageView或相似空间中绘制出来)。</p>
 <h4 id="View绘图循环"><a href="#View绘图循环" class="headerlink" title="View绘图循环"></a>View绘图循环</h4><p>子类化的UIView的基础绘画模式是在必要时更新内容。UIView类使得更新过程更加简单有效：通过收集你发出的更新请求并将它们在合适的时机传输到你的绘制代码中。</p>
 <p>当一个view第一次被展示出来或者view的一部分需要被重新绘制，iOS通过调用view的<strong><code>drawRect:</code></strong>方法让view绘制它的内容。还有很多行为可以触发view的更新：</p>
@@ -186,7 +186,7 @@ return 50;
     <entry>
       <title><![CDATA[Hello World]]></title>
       <url>http://jzy476731162.github.io/2016/05/30/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>

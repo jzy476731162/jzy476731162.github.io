@@ -102,7 +102,7 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/regular_vs_retina_2x.png">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/dae4fea2jw1f4ftkjixg0j214b0mkdp6.jpg">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/flipped_coordinates-1_2x.png">
-<meta property="og:updated_time" content="2016-06-06T02:12:53.000Z">
+<meta property="og:updated_time" content="2016-06-17T02:08:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS绘图思想">
 <meta name="twitter:description" content="原文链接
@@ -126,6 +126,11 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
     }
   };
 </script>
+
+
+
+
+  <link rel="canonical" href="http://jzy476731162.github.io/2016/06/02/iOS绘图思想/"/>
 
   <title> iOS绘图思想 | CJ的小窝 </title>
 </head>
@@ -363,8 +368,7 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
 <blockquote>
 <p>不是所有的UIkit类都是线程安全的。在主线程外的其他线程中执行绘画操作时请先检查文档。</p>
 </blockquote>
-<hr>
-<h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
 <p>除了立刻在屏幕上绘制，UIKit也允许你画到离屏的位图或者PDF图形的上下文中。当你在离屏上下文中绘制时，不是在一个view中绘制，也意味着在view的绘图周期中是不推荐这么做的(除非你随后取出图像并且在imageView或相似空间中绘制出来)。</p>
 <h4 id="View绘图循环"><a href="#View绘图循环" class="headerlink" title="View绘图循环"></a>View绘图循环</h4><p>子类化的UIView的基础绘画模式是在必要时更新内容。UIView类使得更新过程更加简单有效：通过收集你发出的更新请求并将它们在合适的时机传输到你的绘制代码中。</p>
 <p>当一个view第一次被展示出来或者view的一部分需要被重新绘制，iOS通过调用view的<strong><code>drawRect:</code></strong>方法让view绘制它的内容。还有很多行为可以触发view的更新：</p>
@@ -720,7 +724,7 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS绘图思想"><span class="nav-number">1.</span> <span class="nav-text">iOS绘图思想</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UIKit-图像系统"><span class="nav-number">1.1.</span> <span class="nav-text">UIKit 图像系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#View绘图循环"><span class="nav-number">1.1.1.</span> <span class="nav-text">View绘图循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#点与像素"><span class="nav-number">1.1.2.</span> <span class="nav-text">点与像素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取图像上下文"><span class="nav-number">1.2.</span> <span class="nav-text">获取图像上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向屏幕上绘制"><span class="nav-number">1.2.1.</span> <span class="nav-text">向屏幕上绘制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制位图上下文和PDF上下文"><span class="nav-number">1.2.2.</span> <span class="nav-text">绘制位图上下文和PDF上下文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色和色彩空间"><span class="nav-number">1.3.</span> <span class="nav-text">颜色和色彩空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Quartz和UIKit绘制"><span class="nav-number">2.</span> <span class="nav-text">使用Quartz和UIKit绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置图形上下文"><span class="nav-number">2.0.1.</span> <span class="nav-text">配置图形上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建并绘制路径"><span class="nav-number">2.0.2.</span> <span class="nav-text">创建并绘制路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建图案，渐变和阴影"><span class="nav-number">2.0.3.</span> <span class="nav-text">创建图案，渐变和阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义坐标空间"><span class="nav-number">2.0.4.</span> <span class="nav-text">自定义坐标空间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用坐标变换来提升绘制表现"><span class="nav-number">2.0.4.1.</span> <span class="nav-text">使用坐标变换来提升绘制表现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#翻转默认坐标系"><span class="nav-number">2.0.4.2.</span> <span class="nav-text">翻转默认坐标系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不同坐标系绘制的副作用"><span class="nav-number">2.0.4.3.</span> <span class="nav-text">不同坐标系绘制的副作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#阴影"><span class="nav-number">2.0.4.4.</span> <span class="nav-text">阴影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用CoreAnimation效果"><span class="nav-number">2.1.</span> <span class="nav-text">应用CoreAnimation效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于Layer"><span class="nav-number">2.1.1.</span> <span class="nav-text">关于Layer</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#iOS绘图思想"><span class="nav-number">1.</span> <span class="nav-text">iOS绘图思想</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">2.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#UIKit-图像系统"><span class="nav-number">2.1.</span> <span class="nav-text">UIKit 图像系统</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#View绘图循环"><span class="nav-number">2.1.1.</span> <span class="nav-text">View绘图循环</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#点与像素"><span class="nav-number">2.1.2.</span> <span class="nav-text">点与像素</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取图像上下文"><span class="nav-number">2.2.</span> <span class="nav-text">获取图像上下文</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#向屏幕上绘制"><span class="nav-number">2.2.1.</span> <span class="nav-text">向屏幕上绘制</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#绘制位图上下文和PDF上下文"><span class="nav-number">2.2.2.</span> <span class="nav-text">绘制位图上下文和PDF上下文</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#颜色和色彩空间"><span class="nav-number">2.3.</span> <span class="nav-text">颜色和色彩空间</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用Quartz和UIKit绘制"><span class="nav-number">3.</span> <span class="nav-text">使用Quartz和UIKit绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#配置图形上下文"><span class="nav-number">3.0.1.</span> <span class="nav-text">配置图形上下文</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建并绘制路径"><span class="nav-number">3.0.2.</span> <span class="nav-text">创建并绘制路径</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#创建图案，渐变和阴影"><span class="nav-number">3.0.3.</span> <span class="nav-text">创建图案，渐变和阴影</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#自定义坐标空间"><span class="nav-number">3.0.4.</span> <span class="nav-text">自定义坐标空间</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#使用坐标变换来提升绘制表现"><span class="nav-number">3.0.4.1.</span> <span class="nav-text">使用坐标变换来提升绘制表现</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#翻转默认坐标系"><span class="nav-number">3.0.4.2.</span> <span class="nav-text">翻转默认坐标系</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#不同坐标系绘制的副作用"><span class="nav-number">3.0.4.3.</span> <span class="nav-text">不同坐标系绘制的副作用</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#阴影"><span class="nav-number">3.0.4.4.</span> <span class="nav-text">阴影</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用CoreAnimation效果"><span class="nav-number">3.1.</span> <span class="nav-text">应用CoreAnimation效果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#关于Layer"><span class="nav-number">3.1.1.</span> <span class="nav-text">关于Layer</span></a></li></ol></li></ol></li></ol></div>
             
           </div>
         </section>
@@ -1037,6 +1041,14 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
             var element = document.getElementById(url);
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
           }
         })
         .fail(function (object, error) {

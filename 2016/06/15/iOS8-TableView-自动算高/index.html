@@ -93,7 +93,7 @@
 <meta property="og:description" content="在iOS8及以上系统中,可以使用AutoLayout来设置cell，使得内容 撑起 Cell,而只需要将tableView的rowHeight属性设置为UITableViewAutomaticDimension 自动计算，然后使用
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIn">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg">
-<meta property="og:updated_time" content="2016-06-15T09:39:53.000Z">
+<meta property="og:updated_time" content="2016-06-17T02:08:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS8 TableView 自动算高">
 <meta name="twitter:description" content="在iOS8及以上系统中,可以使用AutoLayout来设置cell，使得内容 撑起 Cell,而只需要将tableView的rowHeight属性设置为UITableViewAutomaticDimension 自动计算，然后使用
@@ -115,6 +115,11 @@
     }
   };
 </script>
+
+
+
+
+  <link rel="canonical" href="http://jzy476731162.github.io/2016/06/15/iOS8-TableView-自动算高/"/>
 
   <title> iOS8 TableView 自动算高 | CJ的小窝 </title>
 </head>
@@ -348,7 +353,8 @@
 <pre><code>- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
 return 50;
 }
-</code></pre><p>来设置一个估算的大致高度。</p>
+</code></pre><a id="more"></a>
+<p>来设置一个估算的大致高度。</p>
 <p>结果在最下</p>
 <p>但我还是更习惯将行高缓存下来:<br>如果上面提到的你都做了，但是tableView:heightForRowAtIndexPath:的性能仍然慢的不可接受。非常不幸，你需要给行高做一些缓存（这是苹果的工程师们给出的改进建议）。大体的思路是，第一次计算时让自动布局引擎解析约束条件，然后将计算出的行高缓存起来，以后所有对该cell的高度的请求都返回缓存值。当然，关键还要确保任何会导致cell高度变化的情况发生时你都清除了缓存的行高——这通常发生在cell的内容变化时或其他重大事件发生时（比如用户调节了动态类型文本大小(Dynamic Type text size)的滑动条）。</p>
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg" alt=""></p>
@@ -868,6 +874,14 @@ return 50;
             var element = document.getElementById(url);
 
             $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
           }
         })
         .fail(function (object, error) {
