@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Xcode Target," />
 
 
 
@@ -84,15 +84,35 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="CJ的小窝">
-<meta property="og:url" content="http://jzy476731162.github.io/categories/CocoaPods/index.html">
+<meta name="description" content="#Xcode添加多个Target
+###Target概念
+Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Xcode添加多个Target">
+<meta property="og:url" content="http://jzy476731162.github.io/2016/11/02/Xcode添加多个Target/index.html">
 <meta property="og:site_name" content="CJ的小窝">
-<meta property="og:description">
+<meta property="og:description" content="#Xcode添加多个Target
+###Target概念
+Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1zq1xpkj21kw0xj13l.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/dae4fea2gw1f9e200hw3nj20us0gpjwa.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e20pn4moj21kw0sjqaz.jpg">
+<meta property="og:image" content="http://ww1.sinaimg.cn/large/dae4fea2gw1f9e209zw0aj20xg0intdp.jpg">
+<meta property="og:image" content="http://ww2.sinaimg.cn/large/dae4fea2gw1f9e20pa5dwj20ut0k8n1d.jpg">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160330/1459309199528760.png">
+<meta property="og:image" content="http://ww4.sinaimg.cn/large/dae4fea2gw1f9e20peglxj20za0mz0y5.jpg">
+<meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e20p8jyuj20xg0mtn2w.jpg">
+<meta property="og:updated_time" content="2016-11-02T12:52:19.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="CJ的小窝">
-<meta name="twitter:description">
+<meta name="twitter:title" content="Xcode添加多个Target">
+<meta name="twitter:description" content="#Xcode添加多个Target
+###Target概念
+Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是">
+<meta name="twitter:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg">
 
 
 
@@ -113,9 +133,9 @@
 
 
 
-  <link rel="canonical" href="http://jzy476731162.github.io/categories/CocoaPods/"/>
+  <link rel="canonical" href="http://jzy476731162.github.io/2016/11/02/Xcode添加多个Target/"/>
 
-  <title> 分类: CocoaPods | CJ的小窝 </title>
+  <title> Xcode添加多个Target | CJ的小窝 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -136,7 +156,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-right  ">
+  <div class="container one-collumn sidebar-position-right page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -247,47 +267,195 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        CocoaPods
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Xcode添加多个Target
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-11-02T16:39:26+08:00" content="2016-11-02">
+              2016-11-02
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Xcode/" itemprop="url" rel="index">
+                    <span itemprop="name">Xcode</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/11/02/Xcode添加多个Target/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/02/Xcode添加多个Target/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2016/11/02/Xcode添加多个Target/" class="leancloud_visitors" data-flag-title="Xcode添加多个Target">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>#Xcode添加多个Target</p>
+<p>###Target概念</p>
+<p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
+<p>构建产品的说明是以构建信息(build settings)和构建阶段(build phases)组成,你可以在Xcode项目编辑器(product editor)中编辑这些说明。Target继承项目的构建设置(build settings),但是你可以通过在不同的target level指定不同的设置信息来重载它。(其实也可以在All中也可以自行修改。对应的在Level中系统会进行更新,如图-1)。同时只能存在一个可用的target;Xcode scheme来指定哪一个是可用的。</p>
+<p><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg" alt="图1"></p>
+<p>target和它的产品可以跟另一个target关联。如果一个target进行构建时需要另一个target的输出作为输入信息,前者依赖后者。如果他们都是在同一个workspace,Xcode可以发现依赖关系,并按顺序来构建产品。这种关系成为隐性依赖(implicit dependency)。你也可以在构建设置(build settings)中指定依赖关系,并且指定两个实际上没有依赖关系的target成为隐性依赖关系。举个例子,你可能在同一个workspace中创建一个library和一个需要链接该library的application。Xcode可以发现这个关系,并且首先构建library。然而你想链接本workspace之外的library,你需要在构建设置(build settings)中创建一个显性依赖来重载这个隐性依赖。</p>
+<a id="more"></a>
+<blockquote>
+<p>优点:可以在一个项目中配置两个版本。减少切换环境的工作量。</p>
+</blockquote>
+<h3 id="创建一个新的Target"><a href="#创建一个新的Target" class="headerlink" title="创建一个新的Target"></a>创建一个新的Target</h3><p>进入项目设置,右击当前的target,选择Duplicate<br><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1zq1xpkj21kw0xj13l.jpg" alt="图2"></p>
+<p><img src="http://ww2.sinaimg.cn/large/dae4fea2gw1f9e200hw3nj20us0gpjwa.jpg" alt="图3"><br>此时生成一个名为xxcopy的target。</p>
+<hr>
+<h3 id="配置Dev-Target"><a href="#配置Dev-Target" class="headerlink" title="配置Dev Target"></a>配置Dev Target</h3><p>双击更改新Target名字。</p>
+<p>但是scheme的名字是通过点击设备左边的scheme-&gt;manage schemes,双击修改scheme名称,如下图<br><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e20pn4moj21kw0sjqaz.jpg" alt="图8"></p>
+<p>注意左边目录会生成一个targetTest copy-Info.plist。<br>为了便于管理,进入该info.plist路径。将它移动到和Info.plist同级目录下,顺便给他改个名字加到工程目录中。我这里改成了devInfo.plist。</p>
+<p>此时DevTarget一定会出问题。。。因为Info.plist路径变了</p>
+<p>来到DevTarget构建设置(build settings)里搜索info.plist,并更改plist路径即可<br><img src="http://ww1.sinaimg.cn/large/dae4fea2gw1f9e209zw0aj20xg0intdp.jpg" alt="图4"></p>
+<h4 id="定义宏来配置代码中环境切换"><a href="#定义宏来配置代码中环境切换" class="headerlink" title="定义宏来配置代码中环境切换"></a>定义宏来配置代码中环境切换</h4><p>本图是开启level窗口试图。更直观的看出继承关系一些。在构建设置中搜索<code>preprocessorMacro</code>,将DevTarget增加Dev=1,将原target增加Dev=0,反正这里的宏是由你自己定义的,只要代码中做出对应修改就可以了。<br>对于Objective-C的项目，拓展<code>Preprocessor Macros</code>在Rebug和Release区域添加一个变量。对于开发target（即testDev），将该值设置为<code>DEVELOPMENT = 1</code>。另一个，将值设为<code>DEVELOPMENT=0</code>来表示生产版本。<br><img src="http://ww2.sinaimg.cn/large/dae4fea2gw1f9e20pa5dwj20ut0k8n1d.jpg" alt="图5"><br>对于swift的项目，编译器不再支持预处理指令。作为替代，它使用编译时的属性和build配置。选中开发target，添加一个标识表示开发版本。找到<code>Build Setting</code>往下滚动到<code>Swift Compiler - Custom Flags</code>部分。将值设为<code>-DDEVELOPMENT</code>表示这个target作为开发版本。<br><img src="http://cc.cocimg.com/api/uploads/20160330/1459309199528760.png" alt="图9"></p>
+<p>刚才我在代码中配置好了环境切换开关,现在来试一下<br><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9e20peglxj20za0mz0y5.jpg" alt="图6"><br><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e20p8jyuj20xg0mtn2w.jpg" alt="图7"><br>OK!完工了</p>
+<hr>
+<blockquote>
+<p>Tips:<br>在使用Git时,如果是在除主干分支的其他分支上创建的多Target而没有merge到主干分支上。当删除掉该git重新clone一份切换到之前创建target的分支上。你会发现之前设置的scheme消失了,但target仍然存在,记得重新添加一下scheme就可以了。</p>
+</blockquote>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/07/01/CocoaPods的安装以及多版本Pods共存/" itemprop="url">
-              
-                <span itemprop="name">CocoaPods的安装以及多版本Pods共存</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
+  <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+    <div>坚持原创技术分享，您的支持将鼓励我继续创作！</div>
+    <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+      <span>赏</span>
+    </button>
+    <div id="QR" style="display: none;">
+      
+        <div id="wechat" style="display: inline-block">
+          <img id="wechat_qr" src="/images/wxpay.jpg" alt="CJ WeChat Pay"/>
+          <p>微信打赏</p>
+        </div>
+      
+      
+    </div>
+  </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-07-01T11:57:29+08:00"
-              content="2016-07-01" >
-          07-01
-        </time>
-      </div>
 
-    </header>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Xcode-Target/" rel="tag">#Xcode Target</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/07/01/CocoaPods的安装以及多版本Pods共存/" rel="next" title="CocoaPods的安装以及多版本Pods共存">
+                <i class="fa fa-chevron-left"></i> CocoaPods的安装以及多版本Pods共存
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -295,6 +463,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/11/02/Xcode添加多个Target/"
+           data-title="Xcode添加多个Target" data-url="http://jzy476731162.github.io/2016/11/02/Xcode添加多个Target/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -314,8 +490,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -394,6 +579,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个新的Target"><span class="nav-number">1.</span> <span class="nav-text">创建一个新的Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Dev-Target"><span class="nav-number">2.</span> <span class="nav-text">配置Dev Target</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义宏来配置代码中环境切换"><span class="nav-number">2.1.</span> <span class="nav-text">定义宏来配置代码中环境切换</span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -502,6 +698,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
