@@ -85,30 +85,27 @@
 
 
 <meta name="description" content="原文链接
-
 iOS绘图思想高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：openGL或原生渲染(Quartz，Core Animation，UIkit)。本文描述的是用原生渲染(如果您想学习OpenGL绘图，请看链接)
-Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变">
+Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填">
 <meta property="og:type" content="article">
 <meta property="og:title" content="iOS绘图思想">
 <meta property="og:url" content="http://jzy476731162.github.io/2016/06/02/iOS绘图思想/index.html">
 <meta property="og:site_name" content="CJ的小窝">
 <meta property="og:description" content="原文链接
-
 iOS绘图思想高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：openGL或原生渲染(Quartz，Core Animation，UIkit)。本文描述的是用原生渲染(如果您想学习OpenGL绘图，请看链接)
-Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变">
+Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/coordinate_differences_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/flipped_coordinates-2_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/pixel_alignment_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/regular_vs_retina_2x.png">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/dae4fea2jw1f4ftkjixg0j214b0mkdp6.jpg">
 <meta property="og:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/flipped_coordinates-1_2x.png">
-<meta property="og:updated_time" content="2016-06-17T02:08:52.000Z">
+<meta property="og:updated_time" content="2016-11-03T02:36:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="iOS绘图思想">
 <meta name="twitter:description" content="原文链接
-
 iOS绘图思想高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：openGL或原生渲染(Quartz，Core Animation，UIkit)。本文描述的是用原生渲染(如果您想学习OpenGL绘图，请看链接)
-Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变">
+Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填">
 <meta name="twitter:image" content="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/Art/coordinate_differences_2x.png">
 
 
@@ -361,7 +358,6 @@ Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗�
 
       
         <p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html" target="_blank" rel="external">原文链接</a><br><!--[TOC]--></p>
-<hr>
 <h2 id="iOS绘图思想"><a href="#iOS绘图思想" class="headerlink" title="iOS绘图思想"></a>iOS绘图思想</h2><p>高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：<code>openGL</code>或<code>原生渲染(Quartz，Core Animation，UIkit)</code>。本文描述的是用原生渲染(如果您想学习OpenGL绘图，<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793" target="_blank" rel="external">请看链接</a>)</p>
 <p>Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填充图案，图片，颜色，坐标空间变换，以及PDF创建、显示、解析。UIKit提供了通过OC封装的文字艺术(line art)，Quartz 图片以及颜色处理。Core Animation为UIKit中view的property的基础动画变换提供了底层支持并且可以用来实现自定义动画。</p>
 <p>本章节提供了iOS应用绘画的过程概述，伴随着每一种绘画技术都会有特定的绘画技巧。你将找到在iOS平台上优化绘画代码的提示和指导。</p>
