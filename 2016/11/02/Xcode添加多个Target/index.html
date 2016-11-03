@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="Xcode添加多个TargetTarget概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
-构建产品的说明是以构建信息(">
+<meta name="description" content="Target概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是以构建信息(build settings)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Xcode添加多个Target">
 <meta property="og:url" content="http://jzy476731162.github.io/2016/11/02/Xcode添加多个Target/index.html">
 <meta property="og:site_name" content="CJ的小窝">
-<meta property="og:description" content="Xcode添加多个TargetTarget概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
-构建产品的说明是以构建信息(">
+<meta property="og:description" content="Target概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是以构建信息(build settings)">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1zq1xpkj21kw0xj13l.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/dae4fea2gw1f9e200hw3nj20us0gpjwa.jpg">
@@ -101,11 +101,11 @@
 <meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160330/1459309199528760.png">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/dae4fea2gw1f9e20peglxj20za0mz0y5.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e20p8jyuj20xg0mtn2w.jpg">
-<meta property="og:updated_time" content="2016-11-03T02:28:25.000Z">
+<meta property="og:updated_time" content="2016-11-03T02:34:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Xcode添加多个Target">
-<meta name="twitter:description" content="Xcode添加多个TargetTarget概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
-构建产品的说明是以构建信息(">
+<meta name="twitter:description" content="Target概念Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。
+构建产品的说明是以构建信息(build settings)">
 <meta name="twitter:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg">
 
 
@@ -357,7 +357,7 @@
       
 
       
-        <h1 id="Xcode添加多个Target"><a href="#Xcode添加多个Target" class="headerlink" title="Xcode添加多个Target"></a>Xcode添加多个Target</h1><h3 id="Target概念"><a href="#Target概念" class="headerlink" title="Target概念"></a>Target概念</h3><p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
+        <h3 id="Target概念"><a href="#Target概念" class="headerlink" title="Target概念"></a>Target概念</h3><p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
 <p>构建产品的说明是以构建信息(build settings)和构建阶段(build phases)组成,你可以在Xcode项目编辑器(product editor)中编辑这些说明。Target继承项目的构建设置(build settings),但是你可以通过在不同的target level指定不同的设置信息来重载它。(其实也可以在All中也可以自行修改。对应的在Level中系统会进行更新,如图-1)。同时只能存在一个可用的target;Xcode scheme来指定哪一个是可用的。</p>
 <p><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg" alt="图1"></p>
 <p>target和它的产品可以跟另一个target关联。如果一个target进行构建时需要另一个target的输出作为输入信息,前者依赖后者。如果他们都是在同一个workspace,Xcode可以发现依赖关系,并按顺序来构建产品。这种关系成为隐性依赖(implicit dependency)。你也可以在构建设置(build settings)中指定依赖关系,并且指定两个实际上没有依赖关系的target成为隐性依赖关系。举个例子,你可能在同一个workspace中创建一个library和一个需要链接该library的application。Xcode可以发现这个关系,并且首先构建library。然而你想链接本workspace之外的library,你需要在构建设置(build settings)中创建一个显性依赖来重载这个隐性依赖。</p>
@@ -578,7 +578,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Xcode添加多个Target"><span class="nav-number">1.</span> <span class="nav-text">Xcode添加多个Target</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Target概念"><span class="nav-number">1.0.1.</span> <span class="nav-text">Target概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个新的Target"><span class="nav-number">1.0.2.</span> <span class="nav-text">创建一个新的Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Dev-Target"><span class="nav-number">1.0.3.</span> <span class="nav-text">配置Dev Target</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义宏来配置代码中环境切换"><span class="nav-number">1.0.3.1.</span> <span class="nav-text">定义宏来配置代码中环境切换</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Target概念"><span class="nav-number">1.</span> <span class="nav-text">Target概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个新的Target"><span class="nav-number">2.</span> <span class="nav-text">创建一个新的Target</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#配置Dev-Target"><span class="nav-number">3.</span> <span class="nav-text">配置Dev Target</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#定义宏来配置代码中环境切换"><span class="nav-number">3.1.</span> <span class="nav-text">定义宏来配置代码中环境切换</span></a></li></ol></li></ol></div>
             
           </div>
         </section>

@@ -349,7 +349,7 @@
 
       
         
-          <h1 id="Xcode添加多个Target"><a href="#Xcode添加多个Target" class="headerlink" title="Xcode添加多个Target"></a>Xcode添加多个Target</h1><h3 id="Target概念"><a href="#Target概念" class="headerlink" title="Target概念"></a>Target概念</h3><p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
+          <h3 id="Target概念"><a href="#Target概念" class="headerlink" title="Target概念"></a>Target概念</h3><p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
 <p>构建产品的说明是以构建信息(build settings)和构建阶段(build phases)组成,你可以在Xcode项目编辑器(product editor)中编辑这些说明。Target继承项目的构建设置(build settings),但是你可以通过在不同的target level指定不同的设置信息来重载它。(其实也可以在All中也可以自行修改。对应的在Level中系统会进行更新,如图-1)。同时只能存在一个可用的target;Xcode scheme来指定哪一个是可用的。</p>
 <p><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9e1z1i0gpj20zc09wwhs.jpg" alt="图1"></p>
 <p>target和它的产品可以跟另一个target关联。如果一个target进行构建时需要另一个target的输出作为输入信息,前者依赖后者。如果他们都是在同一个workspace,Xcode可以发现依赖关系,并按顺序来构建产品。这种关系成为隐性依赖(implicit dependency)。你也可以在构建设置(build settings)中指定依赖关系,并且指定两个实际上没有依赖关系的target成为隐性依赖关系。举个例子,你可能在同一个workspace中创建一个library和一个需要链接该library的application。Xcode可以发现这个关系,并且首先构建library。然而你想链接本workspace之外的library,你需要在构建设置(build settings)中创建一个显性依赖来重载这个隐性依赖。</p>
