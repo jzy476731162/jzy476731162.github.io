@@ -4,6 +4,114 @@
   
     
     <entry>
+      <title><![CDATA[创建私有pod库并发布到Cocoapods]]></title>
+      <url>http://jzy476731162.github.io/2016/11/03/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0Cocoapods/</url>
+      <content type="html"><![CDATA[<p>老哥们,小弟又来了!哈哈<br>最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController </p>
+<h2 id="探究"><a href="#探究" class="headerlink" title="探究"></a>探究</h2><p>不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要<code>setup</code>一下么?执行<code>pod setup</code>操作后我们会在cocoapods的目录下将pod的远程master分支拉取到本地。默认路径为<code>~/.cocoapods/repos/master</code>。如下图</p>
+<p><img src="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5p1ajuj219w0ri13d.jpg" alt=""></p>
+<p>拿AFN来举例,进入文件夹发现有不同版本的文件夹。每个版本的文件夹对应的是该版本的podspec.json配置文件,来看一下该配置文件里都存储了什么信息:</p>
+<p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5okz79j2104100n7g.jpg" alt=""></p>
+<p>这基本也就是podspec(即该库该版本的配置信息),上面几条估计大家都能看明白,然后看到<code>&#39;source&#39;</code>这条,what means?? git即为AFN公布的git地址。可以看到在github上。那下面的tag是什么?这里就是至关重要的一点,<code>tag</code>,我想git熟练的老哥们应该知道tag是个啥。tag就是标签嘛。一般在某一产品发布之后在git中打上tag可以便于我们寻找哪个版本app的位置。</p>
+<h4 id="打Tag"><a href="#打Tag" class="headerlink" title="打Tag"></a>打Tag</h4><p>切换到当前需要打tag的git节点下,tag命令如下:</p>
+<p>git tag -m ‘1.0.3’ <font color="green">//创建一个名为1.0.3的tag</font></p>
+<p>git push –tags        <font color="green">//将tag推到remote</font></p>
+<p>然后pod根据配置文件中的这个tag值去你的git source中查找对应版本的三方库。</p>
+<p>原理就讲到这里,还有几个重要的标签,我们接下来再讲。</p>
+<hr>
+<h2 id="创建私有仓库"><a href="#创建私有仓库" class="headerlink" title="创建私有仓库"></a>创建私有仓库</h2><p>重点现在开始了</p>
+<p>master是pod的,我们可以fork一份官方的master。但是定制性比较差嘛因为它压根就是为pod服务的。</p>
+<p>那么私有仓库的优点就来了:如果你有在项目中很常用的自己写的库或者文件,可以塞进来,其实也就稍微省了那么一丢丢时间,然后项目整洁一些。当然这么做也是有缺点的。万一….你写错代码了呢?会超级麻烦的。</p>
+<p>我就直接用了github作为私有仓库,当然如果大家有不想public的库也可以用自己公司的gitlab或者三方的coding,bitBucket等可免费私有的git仓库。</p>
+<h3 id="创建空私有库"><a href="#创建空私有库" class="headerlink" title="创建空私有库"></a>创建空私有库</h3><p>先去git上创建一个仓库,就命名为CJSpecs好了。最好不要选择生成readme/gitignore/license文件。等会初始化podspec的时候会产生不必要的merge。就生成一个空仓库好了。</p>
+<p>空仓库好了。我们来让pod为我们初始化本地内容:</p>
+<p>terminal中执行如下命令</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add [Private Repo Name] [Github HTTPS clone URL]</span><br></pre></td></tr></table></figure>
+<p>Private Repo Name为本地私有仓库名称,而后者就是git上的地址啦。这里我的命令是下面这样的:</p>
+<font color="green">//pod repo add CJ <a href="https://github.com/jzy476731162/CJSpecs" target="_blank" rel="external">https://github.com/jzy476731162/CJSpecs</a></font>
+
+<p>随后pod在根目录中为我们生成了CJ这个目录,这个目录的git地址是你刚才配置的<code>私有仓库地址(remote repo)</code>。如果记不清后面会迷糊的。之前配置的时候我就没记清这个,饶了好大一个圈子…</p>
+<p>生成后是下图这个样子(但是请忽略掉上面两个文件夹。此步骤应该只生成了license和readme)</p>
+<p><img src="http://ww3.sinaimg.cn/large/dae4fea2gw1f9fg5opqh9j20yo09umyv.jpg" alt=""></p>
+<p>这里步骤不能出问题,有好多博客写的顺序都是乱的。瞎搞….</p>
+<h3 id="创建pod"><a href="#创建pod" class="headerlink" title="创建pod"></a>创建pod</h3><p>我是创建了一个CJSegment文件夹。来分辨我到底在干什么…因为本人有时候有点迷糊,搞着搞着名字一样就会晕头转向,我的目标podname是<code>CJSegmentController</code><br>进入CJSegment目录中</p>
+<p>terminal中执行:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib create [pod name]</span><br></pre></td></tr></table></figure>
+<p>我的命令:</p>
+<font color="green">//pod lib create CJSegmentController</font>
+
+<p>我记得当时输入命令后,会提示给你要怎么创建pod</p>
+<p>&gt;<br>1.选择使用语言[Swift/ObjC]<br>&gt;<br>2.是否含有Demo[Y/N]<br>&gt;<br>3.好像是view自检..(这个记不太清了)<br>&gt;<br>4.选择test Framework [Specta / Kiwi / None] / (这个也没搞清楚都是什么样式,回头需要查询一下)</p>
+<p>随后pod在CJSegment目录下生成了刚才输入的CJSegmentController文件夹,下图</p>
+<p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5otq9sj21kw0kigqb.jpg" alt=""></p>
+<p>到此pod创建完毕,该进行下一步了</p>
+<h3 id="填充pod"><a href="#填充pod" class="headerlink" title="填充pod"></a>填充pod</h3><p>起名一直是编程人员的痛点。就叫填充pod好了。哈哈。</p>
+<p>请把您想放入pod中的文件放置到上图的Classes路径下。Assets目录是放置资源文件的地方。</p>
+<blockquote>
+<p>这里遇到了个坑。我算是中度storyboard拥趸,在我没研究pod私有库之前我认为storyboard是可以放置到pod中的。结果在校验的时候报了bug…提示不能这么干。我说怎么基本上没见到三方pod中还有storyboard的,好吧。只能改代码了…可能是pod为了开发者用起来方便吧。而Storyboard还需要找sb来创建viewController。当然还是有方法使用xib的。</p>
+</blockquote>
+<p>代码改好也测试完了。塞进去就好了。如果定义了有Demo,请顺便把Demo也完善一下。</p>
+<p>然后我们来进行下一步,创建该pod的仓库。</p>
+<p>前文提到了pod是根据podSpec文件中的resouce tag来寻找该版本的pod,所以如果想发布到pod上这里用public git。</p>
+<p>我去github上创建了一个空git 命名为CJSegmentController,同样没有license/readme原理同上,gitignore可以选填。<br>改好readme文件推到该git上。</p>
+<p>git在这里不多说了。如果老哥对git不熟请移步<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖老师的git教程</a>,个人认为廖老师的教程很好,但用好重要还是在于多练。</p>
+<p>此时如果到CJ/ 和CJSegmentController/目录下使用<code>git remote -v</code>查看git源发现这两个git地址应该是不一样的。因为前者是私人仓库的地址,后者是你创建的三方库的地址。之前就迷糊在了这里,强行坑了自己半天。</p>
+<p>下一步,修改podSpec即pod配置文件,如果老哥使用了xib的话。xib是在资源文件中的。可以扔到Assets中,解注s.resource = “pod/Assets/xx.xib”,也可以放到Classes中。其他的字段也没什么好说的。相信老哥会用pod都明白是什么意思。<code>*.{h,m}</code>是一个类似正则表达式的字符串，表示匹配所有以.h和.m为扩展名的文件。例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.source_files  = &quot;CJSegmentController/Classes/**/*.&#123;h,m&#125;&quot;</span><br></pre></td></tr></table></figure></p>
+<p>我的podspec如下:</p>
+<p><img src="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5p1lsfj21a40zkk8k.jpg" alt=""></p>
+<p>至此pod制作相当于完成了。</p>
+<h3 id="校验刚做好的pod"><a href="#校验刚做好的pod" class="headerlink" title="校验刚做好的pod"></a>校验刚做好的pod</h3><p>到CJSegmentController的目录下。</p>
+<p>Terminal执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod lib lint --verbose</span><br></pre></td></tr></table></figure>
+<p>随后的pod 命令最好是带上–verbose来输出信息。这样可以打印出来详细的错误信息,便于老哥定位错误位置。</p>
+<blockquote>
+<p>The following build commands failed:<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard</p>
+<ul>
+<li>ERROR | license: Sample license type.</li>
+<li>ERROR | [iOS] file patterns: The <code>source_files</code> pattern did not match any file.<h1 id="s-license-“MIT-example-”"><a href="#s-license-“MIT-example-”" class="headerlink" title="s.license      = “MIT (example)”"></a>s.license      = “MIT (example)”</h1> s.license      = { :type =&gt; “MIT”, :file =&gt; “LICENSE” }</li>
+</ul>
+</blockquote>
+<p>   这个就是我之前用Storyboard报错,提示没有找到这个SB文件,这就说明podSpec文件中的source那里出了问题,去改吧~~</p>
+<p>   如果验证无误就可以进行下一步。 将CJSegmentController push到remote上,<a href="# 打Tag">打好tag</a>。 我设置的tag是0.1.0,你可以按你自己的喜好0.0.1/1.0.0都可以。</p>
+<p>   terminal执行校验操作:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CJSegmentController.podspec</span><br></pre></td></tr></table></figure></p>
+<p>   成功后CJ(私人仓库)路径下会出现一个CJSegmentController文件夹(就是我们刚创建的),里面有存储podspec文件,跟master中的形式相同。</p>
+<p>   至此私有仓库搭建完成。在podfile中使用cocoapods/master那行的格式来增加私有仓库的git地址即可。</p>
+<hr>
+<h2 id="发布到Cocoapods"><a href="#发布到Cocoapods" class="headerlink" title="发布到Cocoapods"></a>发布到Cocoapods</h2><p><a href="http://www.cnblogs.com/wengzilin/p/4742530.html" target="_blank" rel="external">这个发布博客很不错</a></p>
+<p>目前cocoapods使用trunk来管理大家pod的发布。</p>
+<p>1.注册trunk<br>pod有最低版本限制,如果希望设备上有多版本pod请查看之前的Cocoapods文章安装RVM。</p>
+<p>注册trunk</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk register [name] &apos;description&apos; --verbose</span><br></pre></td></tr></table></figure>
+<p>name使用Email来代替。命令执行成功后pod 会向邮箱发送一封邮件</p>
+<p><img src="http://ww2.sinaimg.cn/large/dae4fea2gw1f9fg5oul8jj20qy09swgt.jpg" alt=""></p>
+<p>点击链接即可完成注册流程。</p>
+<p>terminal执行如下查询自己的信息:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk me</span><br></pre></td></tr></table></figure>
+<p><img src="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5oq6rqj20vc0aidhz.jpg" alt=""></p>
+<p>当然，如果你的pod是由多人维护的，你也可以添加其他维护者:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk add-owner CJSegmentController xx@xx.com</span><br></pre></td></tr></table></figure>
+<p>至此步-Pods:应该是空的…这里我是后截的图。</p>
+<p>通过trunk上传podspec文件</p>
+<p>进入之前校验生成的pod目录中 : CJSegmentController目录下生成的0.1.0文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod trunk push CJSegmentController.podspec</span><br></pre></td></tr></table></figure>
+<p>该命令执行了如下操作:</p>
+<ul>
+<li><p>验证你的podspec文件是否合法。在trunk方式之前我们一般用“pod lib lint”命令进行验证。</p>
+</li>
+<li><p>上传podspec文件到trunk服务器(其实最终也会自动添加到<a href="https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull" target="_blank" rel="external">https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull</a> request的繁琐操作)</p>
+</li>
+<li><p>将你上传的podspec文件转成json格式文件。</p>
+</li>
+</ul>
+<p>因为上传成功会自动为你更新本地master库,等待一会就完成了。<br><img src="http://ww2.sinaimg.cn/large/dae4fea2gw1f9fg5om2ozj21c610itl5.jpg" alt=""></p>
+<p>告诉你的朋友吧!</p>
+<p>如果要更新你的pod版本.需要到pod路径下更改代码,修改git的tag值并且在podspec中做出对应修改,然后校验,trunk push。</p>
+<blockquote>
+<p><a href="https://github.com/jzy476731162/CJSegmentController" target="_blank" rel="external">CJSegmentController地址</a><br>是一个ContainerSegmentViewController,解决了不同子ViewController上拥有不同的barButtonItem状态但显示在parentVC的navigationBar上异常的问题。</p>
+</blockquote>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[Xcode添加多个Target]]></title>
       <url>http://jzy476731162.github.io/2016/11/02/Xcode%E6%B7%BB%E5%8A%A0%E5%A4%9A%E4%B8%AATarget/</url>
       <content type="html"><![CDATA[<h3 id="Target概念"><a href="#Target概念" class="headerlink" title="Target概念"></a>Target概念</h3><p>Target 是用来指定一个需要构建(build)的产品,其中包含了从project或workspace中的一系列文件在构建时的信息。Target定义了一个简单的产品;它将输入信息打包进编译系统(包含构建中必须的源文件和处理源文件的说明)。项目(Project)中可以包含一个或者多个Target,每一个都可以产生一个产品。</p>
