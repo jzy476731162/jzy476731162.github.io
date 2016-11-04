@@ -100,7 +100,7 @@
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/dae4fea2gw1f9fg5oul8jj20qy09swgt.jpg">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5oq6rqj20vc0aidhz.jpg">
 <meta property="og:image" content="http://ww2.sinaimg.cn/large/dae4fea2gw1f9fg5om2ozj21c610itl5.jpg">
-<meta property="og:updated_time" content="2016-11-04T02:15:01.000Z">
+<meta property="og:updated_time" content="2016-11-04T10:05:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建私有pod库并发布到Cocoapods">
 <meta name="twitter:description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController 
@@ -368,6 +368,7 @@
 <p>git push –tags        <font color="green">//将tag推到remote</font></p>
 <p>然后pod根据配置文件中的这个tag值去你的git source中查找对应版本的三方库。</p>
 <p>原理就讲到这里,还有几个重要的标签,我们接下来再讲。</p>
+<a id="more"></a>
 <h1 id="创建私有仓库"><a href="#创建私有仓库" class="headerlink" title="创建私有仓库"></a>创建私有仓库</h1><p>重点现在开始了</p>
 <p>master是pod的,我们可以fork一份官方的master。但是定制性比较差嘛因为它压根就是为pod服务的。</p>
 <p>那么私有仓库的优点就来了:如果你有在项目中很常用的自己写的库或者文件,可以塞进来,其实也就稍微省了那么一丢丢时间,然后项目整洁一些。当然这么做也是有缺点的。万一….你写错代码了呢?会超级麻烦的。</p>
