@@ -13,7 +13,7 @@
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5okz79j2104100n7g.jpg" alt=""></p>
 <p>这基本也就是podspec(即该库该版本的配置信息),上面几条估计大家都能看明白,然后看到<code>&#39;source&#39;</code>这条,what means?? git即为AFN公布的git地址。可以看到在github上。那下面的tag是什么?这里就是至关重要的一点,<code>tag</code>,我想git熟练的老哥们应该知道tag是个啥。tag就是标签嘛。一般在某一产品发布之后在git中打上tag可以便于我们寻找哪个版本app的位置。</p>
 <h2 id="打Tag"><a href="#打Tag" class="headerlink" title="打Tag"></a>打Tag</h2><p>切换到当前需要打tag的git节点下,tag命令如下:</p>
-<p>git tag -m ‘1.0.3’ <font color="green">//创建一个名为1.0.3的tag</font></p>
+<p>git tag -a v1.0.3 -m ‘release version’ <font color="green">//创建一个名为1.0.3的tag(-m为可选)</font></p>
 <p>git push –tags        <font color="green">//将tag推到remote</font></p>
 <p>然后pod根据配置文件中的这个tag值去你的git source中查找对应版本的三方库。</p>
 <p>原理就讲到这里,还有几个重要的标签,我们接下来再讲。</p>
