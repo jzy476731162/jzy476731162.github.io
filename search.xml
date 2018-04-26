@@ -4,6 +4,16 @@
   
     
     <entry>
+      <title><![CDATA[坑]]></title>
+      <url>http://jzy476731162.github.io/2018/04/26/%E5%9D%91/</url>
+      <content type="html"><![CDATA[<p><a href="https://juejin.im/post/5adf1831518825673b61aa65" target="_blank" rel="noopener">使用 NSUserDefaults 存储字典的一个坑</a>:</p>
+<p>UserDefaults中存储的中能是Property List Objects</p>
+]]></content>
+      
+        
+    </entry>
+    
+    <entry>
       <title><![CDATA[创建私有pod库并发布到Cocoapods]]></title>
       <url>http://jzy476731162.github.io/2016/11/03/%E5%88%9B%E5%BB%BA%E7%A7%81%E6%9C%89pod%E5%BA%93%E5%B9%B6%E5%8F%91%E5%B8%83%E5%88%B0Cocoapods/</url>
       <content type="html"><![CDATA[<p>老哥们,小弟又来了!哈哈<br>最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController </p>
@@ -27,7 +37,7 @@
 <p>terminal中执行如下命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add [Private Repo Name] [Github HTTPS clone URL]</span><br></pre></td></tr></table></figure>
 <p>Private Repo Name为本地私有仓库名称,而后者就是git上的地址啦。这里我的命令是下面这样的:</p>
-<font color="green">//pod repo add CJ <a href="https://github.com/jzy476731162/CJSpecs" target="_blank" rel="external">https://github.com/jzy476731162/CJSpecs</a></font>
+<font color="green">//pod repo add CJ <a href="https://github.com/jzy476731162/CJSpecs" target="_blank" rel="noopener">https://github.com/jzy476731162/CJSpecs</a></font>
 
 <p>随后pod在根目录中为我们生成了CJ这个目录,这个目录的git地址是你刚才配置的<code>私有仓库地址(remote repo)</code>。如果记不清后面会迷糊的。之前配置的时候我就没记清这个,饶了好大一个圈子…</p>
 <p>生成后是下图这个样子(但是请忽略掉上面两个文件夹。此步骤应该只生成了license和readme)</p>
@@ -40,7 +50,18 @@
 <font color="green">//pod lib create CJSegmentController</font>
 
 <p>我记得当时输入命令后,会提示给你要怎么创建pod</p>
-<p>&gt;<br>1.选择使用语言[Swift/ObjC]<br>&gt;<br>2.是否含有Demo[Y/N]<br>&gt;<br>3.好像是view自检..(这个记不太清了)<br>&gt;<br>4.选择test Framework [Specta / Kiwi / None] / (这个也没搞清楚都是什么样式,回头需要查询一下)</p>
+<blockquote>
+</blockquote>
+<p>1.选择使用语言[Swift/ObjC]</p>
+<blockquote>
+</blockquote>
+<p>2.是否含有Demo[Y/N]</p>
+<blockquote>
+</blockquote>
+<p>3.好像是view自检..(这个记不太清了)</p>
+<blockquote>
+</blockquote>
+<p>4.选择test Framework [Specta / Kiwi / None] / (这个也没搞清楚都是什么样式,回头需要查询一下)</p>
 <p>随后pod在CJSegment目录下生成了刚才输入的CJSegmentController文件夹,下图</p>
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5otq9sj21kw0kigqb.jpg" alt=""></p>
 <p>到此pod创建完毕,该进行下一步了</p>
@@ -53,7 +74,7 @@
 <p>然后我们来进行下一步,创建该pod的仓库。</p>
 <p>前文提到了pod是根据podSpec文件中的resouce tag来寻找该版本的pod,所以如果想发布到pod上这里用public git。</p>
 <p>我去github上创建了一个空git 命名为CJSegmentController,同样没有license/readme原理同上,gitignore可以选填。<br>改好readme文件推到该git上。</p>
-<p>git在这里不多说了。如果老哥对git不熟请移步<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖老师的git教程</a>,个人认为廖老师的教程很好,但用好重要还是在于多练。</p>
+<p>git在这里不多说了。如果老哥对git不熟请移步<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖老师的git教程</a>,个人认为廖老师的教程很好,但用好重要还是在于多练。</p>
 <p>此时如果到CJ/ 和CJSegmentController/目录下使用<code>git remote -v</code>查看git源发现这两个git地址应该是不一样的。因为前者是私人仓库的地址,后者是你创建的三方库的地址。之前就迷糊在了这里,强行坑了自己半天。</p>
 <p>下一步,修改podSpec即pod配置文件,如果老哥使用了xib的话。xib是在资源文件中的。可以扔到Assets中,解注s.resource = “pod/Assets/xx.xib”,也可以放到Classes中。其他的字段也没什么好说的。相信老哥会用pod都明白是什么意思。<code>*.{h,m}</code>是一个类似正则表达式的字符串，表示匹配所有以.h和.m为扩展名的文件。例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.source_files  = &quot;CJSegmentController/Classes/**/*.&#123;h,m&#125;&quot;</span><br></pre></td></tr></table></figure></p>
 <p>我的podspec如下:</p>
@@ -67,15 +88,16 @@
 <p>The following build commands failed:<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard</p>
 <ul>
 <li>ERROR | license: Sample license type.</li>
-<li>ERROR | [iOS] file patterns: The <code>source_files</code> pattern did not match any file.<br> #s.license      = “MIT (example)”<br> s.license      = { :type =&gt; “MIT”, :file =&gt; “LICENSE” }</li>
+<li>ERROR | [iOS] file patterns: The <code>source_files</code> pattern did not match any file.</li>
 </ul>
 </blockquote>
+<p>   #s.license      = “MIT (example)”<br>   s.license      = { :type =&gt; “MIT”, :file =&gt; “LICENSE” }</p>
 <p>   这个就是我之前用Storyboard报错,提示没有找到这个SB文件,这就说明podSpec文件中的source那里出了问题,去改吧~~</p>
 <p>   如果验证无误就可以进行下一步。 将CJSegmentController push到remote上,<a href="# 打Tag">打好tag</a>。 我设置的tag是0.1.0,你可以按你自己的喜好0.0.1/1.0.0都可以。</p>
 <p>   terminal执行校验操作:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CJSegmentController.podspec</span><br></pre></td></tr></table></figure></p>
 <p>   成功后CJ(私人仓库)路径下会出现一个CJSegmentController文件夹(就是我们刚创建的),里面有存储podspec文件,跟master中的形式相同。</p>
 <p>   至此私有仓库搭建完成。在podfile中使用cocoapods/master那行的格式来增加私有仓库的git地址即可。</p>
-<h1 id="发布到Cocoapods"><a href="#发布到Cocoapods" class="headerlink" title="发布到Cocoapods"></a>发布到Cocoapods</h1><p><a href="http://www.cnblogs.com/wengzilin/p/4742530.html" target="_blank" rel="external">这个发布博客很不错</a></p>
+<h1 id="发布到Cocoapods"><a href="#发布到Cocoapods" class="headerlink" title="发布到Cocoapods"></a>发布到Cocoapods</h1><p><a href="http://www.cnblogs.com/wengzilin/p/4742530.html" target="_blank" rel="noopener">这个发布博客很不错</a></p>
 <p>目前cocoapods使用trunk来管理大家pod的发布。</p>
 <p>1.注册trunk<br>pod有最低版本限制,如果希望设备上有多版本pod请查看之前的Cocoapods文章安装RVM。</p>
 <p>注册trunk</p>
@@ -96,7 +118,7 @@
 <ul>
 <li><p>验证你的podspec文件是否合法。在trunk方式之前我们一般用“pod lib lint”命令进行验证。</p>
 </li>
-<li><p>上传podspec文件到trunk服务器(其实最终也会自动添加到<a href="https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull" target="_blank" rel="external">https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull</a> request的繁琐操作)</p>
+<li><p>上传podspec文件到trunk服务器(其实最终也会自动添加到<a href="https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull" target="_blank" rel="noopener">https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull</a> request的繁琐操作)</p>
 </li>
 <li><p>将你上传的podspec文件转成json格式文件。</p>
 </li>
@@ -105,9 +127,23 @@
 <p>告诉你的朋友吧!</p>
 <p>如果要更新你的pod版本.需要到pod路径下更改代码,修改git的tag值并且在podspec中做出对应修改,然后校验,trunk push。</p>
 <blockquote>
-<p><a href="https://github.com/jzy476731162/CJSegmentController" target="_blank" rel="external">CJSegmentController地址</a><br>是一个ContainerSegmentViewController,解决了不同子ViewController上拥有不同的barButtonItem状态但显示在parentVC的navigationBar上异常的问题。</p>
+<p><a href="https://github.com/jzy476731162/CJSegmentController" target="_blank" rel="noopener">CJSegmentController地址</a><br>是一个ContainerSegmentViewController,解决了不同子ViewController上拥有不同的barButtonItem状态但显示在parentVC的navigationBar上异常的问题。</p>
 </blockquote>
 ]]></content>
+      
+        <categories>
+            
+            <category> CocoaPods </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> CocoaPods Specs </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -136,6 +172,20 @@
 <p>Tips:<br>在使用Git时,如果是在除主干分支的其他分支上创建的多Target而没有merge到主干分支上。当删除掉该git重新clone一份切换到之前创建target的分支上。你会发现之前设置的scheme消失了,但target仍然存在,记得重新添加一下scheme就可以了。</p>
 </blockquote>
 ]]></content>
+      
+        <categories>
+            
+            <category> Xcode </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> Xcode Target </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -156,6 +206,8 @@
 <p>会返回最新的版本内容,这样就可以确定AFNetworking是支持cocoapods的.<br>好吧，废话少说，我们先创建这个神奇的PodFile。在terminal中进入（cd命令）你项目所在目录，然后在当前目录下，利用vim创建Podfile或者命令行<code>pod init</code>(推荐)，运行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ vim Podfile</span><br></pre></td></tr></table></figure></p>
 <blockquote>
 <p>在pod 1.0.0以下版本,Podfile是这样的:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">platform : ios, &apos;7.1&apos;  </span><br><span class="line">pod &apos;AFNetworking&apos;</span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
 <p>而在 1.0.0以上版本由于pod更新,使用旧方法的pod在安装和更新的时候会报错:<br><code>The dependency</code>xx<code>is not used in any concrete target.</code><br>写法如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">//XX是你的target名称</span><br><span class="line">platform :ios, &apos;8.0&apos;</span><br><span class="line">use_frameworks!</span><br><span class="line"></span><br><span class="line">target &apos;XX&apos; do</span><br><span class="line">pod &apos;AFNetworking&apos;, &apos;~&gt; 2.6&apos;</span><br><span class="line">end</span><br></pre></td></tr></table></figure></p>
 </blockquote>
 <p>这部分我觉得有必要再开一片文章单独写这个…所以简单的就是这样就可以了<br>这两句文字的意思是，当前AFNetworking支持的iOS最高版本是iOS 8.0, 要下载的AFNetworking版本是2.6(当然也可以换成<code>pod &#39;AFNetworking&#39; 然后换行</code>,此时会使用最新的版本)。<br>然后保存退出。vim环境下，在输入上述文字之后按Esc键,输入保存退出命令：<code>:wq</code></p>
@@ -178,6 +230,22 @@
 <h4 id="在Github或Code4App上下载源码解码后报错缺少头文件"><a href="#在Github或Code4App上下载源码解码后报错缺少头文件" class="headerlink" title="在Github或Code4App上下载源码解码后报错缺少头文件."></a>在Github或Code4App上下载源码解码后报错缺少头文件.</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod update</span><br></pre></td></tr></table></figure>
 <p>之后就可以编译运行</p>
 ]]></content>
+      
+        <categories>
+            
+            <category> CocoaPods </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> pods </tag>
+            
+            <tag> mac </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
@@ -193,19 +261,35 @@ return 50;
 <p>但我还是更习惯将行高缓存下来:<br>如果上面提到的你都做了，但是tableView:heightForRowAtIndexPath:的性能仍然慢的不可接受。非常不幸，你需要给行高做一些缓存（这是苹果的工程师们给出的改进建议）。大体的思路是，第一次计算时让自动布局引擎解析约束条件，然后将计算出的行高缓存起来，以后所有对该cell的高度的请求都返回缓存值。当然，关键还要确保任何会导致cell高度变化的情况发生时你都清除了缓存的行高——这通常发生在cell的内容变化时或其他重大事件发生时（比如用户调节了动态类型文本大小(Dynamic Type text size)的滑动条）。</p>
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f4w1m7g5z5j20pu17cqab.jpg" alt=""></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> iOS技巧 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> iOS8 UITableViewCell 算高 </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
       <title><![CDATA[iOS绘图思想]]></title>
       <url>http://jzy476731162.github.io/2016/06/02/iOS%E7%BB%98%E5%9B%BE%E6%80%9D%E6%83%B3/</url>
-      <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html" target="_blank" rel="external">原文链接</a><br><!--[TOC]--></p>
-<h2 id="iOS绘图思想"><a href="#iOS绘图思想" class="headerlink" title="iOS绘图思想"></a>iOS绘图思想</h2><p>高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：<code>openGL</code>或<code>原生渲染(Quartz，Core Animation，UIkit)</code>。本文描述的是用原生渲染(如果您想学习OpenGL绘图，<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793" target="_blank" rel="external">请看链接</a>)</p>
+      <content type="html"><![CDATA[<p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html" target="_blank" rel="noopener">原文链接</a><br><!--[TOC]--></p>
+<h2 id="iOS绘图思想"><a href="#iOS绘图思想" class="headerlink" title="iOS绘图思想"></a>iOS绘图思想</h2><p>高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：<code>openGL</code>或<code>原生渲染(Quartz，Core Animation，UIkit)</code>。本文描述的是用原生渲染(如果您想学习OpenGL绘图，<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793" target="_blank" rel="noopener">请看链接</a>)</p>
 <p>Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填充图案，图片，颜色，坐标空间变换，以及PDF创建、显示、解析。UIKit提供了通过OC封装的文字艺术(line art)，Quartz 图片以及颜色处理。Core Animation为UIKit中view的property的基础动画变换提供了底层支持并且可以用来实现自定义动画。</p>
 <p>本章节提供了iOS应用绘画的过程概述，伴随着每一种绘画技术都会有特定的绘画技巧。你将找到在iOS平台上优化绘画代码的提示和指导。</p>
 <blockquote>
 <p>不是所有的UIkit类都是线程安全的。在主线程外的其他线程中执行绘画操作时请先检查文档。</p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h2><h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
+<a id="more"></a>
+<hr>
+<h3 id="UIKit-图像系统"><a href="#UIKit-图像系统" class="headerlink" title="UIKit 图像系统"></a>UIKit 图像系统</h3><p>在iOS中，所有在屏幕上绘画出来的-不管是通过OpenGL，Quartz，UIKit还是Core Animation - 都是在UIView的一个实例或子类范围中操作。Views决定了在屏幕上绘制发生的部位。如果你使用系统提供的views，系统会为你自动绘制。如果你定义的是自定义views，你必须自己提供绘制的代码。如果使用Quartz，Core Animation，UIkit去绘制，你将会用到在接下来的章节中描述的绘图思想。</p>
 <p>除了立刻在屏幕上绘制，UIKit也允许你画到离屏的位图或者PDF图形的上下文中。当你在离屏上下文中绘制时，不是在一个view中绘制，也意味着在view的绘图周期中是不推荐这么做的(除非你随后取出图像并且在imageView或相似空间中绘制出来)。</p>
 <h4 id="View绘图循环"><a href="#View绘图循环" class="headerlink" title="View绘图循环"></a>View绘图循环</h4><p>子类化的UIView的基础绘画模式是在必要时更新内容。UIView类使得更新过程更加简单有效：通过收集你发出的更新请求并将它们在合适的时机传输到你的绘制代码中。</p>
 <p>当一个view第一次被展示出来或者view的一部分需要被重新绘制，iOS通过调用view的<strong><code>drawRect:</code></strong>方法让view绘制它的内容。还有很多行为可以触发view的更新：</p>
@@ -270,9 +354,9 @@ return 50;
 <p>当然，改变基于缩放因子的绘图特性可能会导致悲剧。1px宽的线条在某些设备上看起来完美但是在高分辨率设备上可能会太细导致无法看清。决定权在你手上！</p>
 <hr>
 <h3 id="获取图像上下文"><a href="#获取图像上下文" class="headerlink" title="获取图像上下文"></a>获取图像上下文</h3><p>大多情况下，图形上下文已经为你配置好。每一个view对象会在<code>drawRect:</code>被调用时自动创建图形上下文来使你的代码立即绘制自定义的内容。作为配置的一部分，UIView的底层为当前绘制环境创建图形上下文(一个<code>CGContextRef</code>不透明的类型)<br>如果你想在view外绘制东西(例如在位图或PDF中捕获一系列绘制操作),如果调用Core Graphics方法是需要一个上下文对象的，你必须进行额外的步骤来获取上下文对象。以下部分解释了原因。</p>
-<p>更多关于图形上下文，修改<code>图像状态(graphics state)</code>信息以及使用图形上下文来创建自定义内容，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="external">Quartz 2D Programming Guide</a>。关于图形上下文的一系列函数请参考这里<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="external">CGContext Reference</a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGBitmapContext/index.html#//apple_ref/doc/uid/TP30000947" target="_blank" rel="external">CGBitmapContext Reference</a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPDFContext/index.html#//apple_ref/doc/uid/TP30000957" target="_blank" rel="external">CGPDFContext Reference</a>.</p>
-<h4 id="向屏幕上绘制"><a href="#向屏幕上绘制" class="headerlink" title="向屏幕上绘制"></a>向屏幕上绘制</h4><p>如果使用Core Graphics函数绘制view，无论在<code>drawRect:</code>方法或者别的地方，前提是需要一个图形上下文(大多数这些方法的第一个参数一定是<code>CGContectRef</code>对象)。你可以调用<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKitFunctionReference/index.html#//apple_ref/c/func/UIGraphicsGetCurrentContext" target="_blank" rel="external"><code>UIGraphicsGetCurrentContext</code></a>取得与在<code>drawRect:</code>中隐式创建的同一个上下文。由于是同一个图形上下文，绘制函数应该参考<code>ULO默认坐标系</code></p>
-<p>如果想使用Core Graphics函数在UIKit的view中绘制，应该使用<code>ULO默认坐标系</code>来进行绘图操作。此外，你可以将<code>当前变换矩阵</code>翻转并且在UIKit的view中使用CoreGraphics原生的<code>LLO坐标系</code>进行绘制。<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW26" target="_blank" rel="external">Flipping the Default Coordinate System</a>中讨论了翻转的详情。</p>
+<p>更多关于图形上下文，修改<code>图像状态(graphics state)</code>信息以及使用图形上下文来创建自定义内容，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="noopener">Quartz 2D Programming Guide</a>。关于图形上下文的一系列函数请参考这里<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="noopener">CGContext Reference</a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGBitmapContext/index.html#//apple_ref/doc/uid/TP30000947" target="_blank" rel="noopener">CGBitmapContext Reference</a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPDFContext/index.html#//apple_ref/doc/uid/TP30000957" target="_blank" rel="noopener">CGPDFContext Reference</a>.</p>
+<h4 id="向屏幕上绘制"><a href="#向屏幕上绘制" class="headerlink" title="向屏幕上绘制"></a>向屏幕上绘制</h4><p>如果使用Core Graphics函数绘制view，无论在<code>drawRect:</code>方法或者别的地方，前提是需要一个图形上下文(大多数这些方法的第一个参数一定是<code>CGContectRef</code>对象)。你可以调用<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKitFunctionReference/index.html#//apple_ref/c/func/UIGraphicsGetCurrentContext" target="_blank" rel="noopener"><code>UIGraphicsGetCurrentContext</code></a>取得与在<code>drawRect:</code>中隐式创建的同一个上下文。由于是同一个图形上下文，绘制函数应该参考<code>ULO默认坐标系</code></p>
+<p>如果想使用Core Graphics函数在UIKit的view中绘制，应该使用<code>ULO默认坐标系</code>来进行绘图操作。此外，你可以将<code>当前变换矩阵</code>翻转并且在UIKit的view中使用CoreGraphics原生的<code>LLO坐标系</code>进行绘制。<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW26" target="_blank" rel="noopener">Flipping the Default Coordinate System</a>中讨论了翻转的详情。</p>
 <p><code>UIGraphicsGetCurrentContext</code>方法总是会返回一个当前有效的图形上下文。比如，如果你创建了一个PDF上下文并且调用了<code>UIGraphicsGetCurrentContext</code>，可以接收到一个PDF上下文。如果想使用CoreGraphics方法来在view上绘制就必须使用<code>UIGraphicsGetCurrentContext</code>返回的图形上下文。</p>
 <blockquote>
 <p><code>UIPrintPageRenderer</code>类声明了绘制可印刷内容的方法。在一个类似于<code>drawRect:</code>方法中，UIKit在这些方法的实现中设置了隐式的图形上下文。这个图形上下文建立了一个<code>ULO默认坐标系</code></p>
@@ -280,12 +364,12 @@ return 50;
 <h4 id="绘制位图上下文和PDF上下文"><a href="#绘制位图上下文和PDF上下文" class="headerlink" title="绘制位图上下文和PDF上下文"></a>绘制位图上下文和PDF上下文</h4><p>UIKit提供了以下行为的方法：在位图图形上下文渲染图片，通过在PDF图形上下文中绘制产生PDF内容。调用这些方法的第一步都是创建一个图形上下文-分别是一个位图上下文或者PDF上下文。返回的对象作为当前(以及隐式)图形上下文进行连续的绘制和状态设置。当完成在上下文中的绘制，调用另外一个方法来关闭上下文。</p>
 <p>UIKit的位图上下文和PDF上下文都建立了一个<code>ULO默认坐标系</code>。CoreGraphics也有对应的方法来在位图上下文中渲染和在PDF图形上下文中绘制。通过CoreGraphics创建的上下文是基于<code>LLO默认坐标系的</code>。</p>
 <blockquote>
-<p>在iOS中，建议你使用UIKit框架来绘制位图上下文和PDF上下文。如果你使用CoreGraphics作为备胎并打算显示渲染结果，你需要通过调整你的代码来弥补两个不同的默认坐标系的差异。更多信息请查看<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW26" target="_blank" rel="external">Flipping the Default Coordinate System</a></p>
+<p>在iOS中，建议你使用UIKit框架来绘制位图上下文和PDF上下文。如果你使用CoreGraphics作为备胎并打算显示渲染结果，你需要通过调整你的代码来弥补两个不同的默认坐标系的差异。更多信息请查看<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW26" target="_blank" rel="noopener">Flipping the Default Coordinate System</a></p>
 </blockquote>
 <hr>
 <h3 id="颜色和色彩空间"><a href="#颜色和色彩空间" class="headerlink" title="颜色和色彩空间"></a>颜色和色彩空间</h3><p>iOS在Quartz中支持全系列色彩空间，然而大多数应用只需要RGB色彩空间，因为iOS被设计用于运行在嵌入式硬件并且在屏幕上显示图像，RGB色彩空间是最合适的选择。</p>
 <p>UIColor对象提供了便捷的方法指定RGB，HSB，灰阶色值。如果以该方式创建颜色，不需要指定色彩空间，因为UIColor自动为你定义了一个。</p>
-<p>也可以使用CoreGraphics框架中的<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSetRGBStrokeColor" target="_blank" rel="external"><code>CGContextSetRGBStrokeColor</code></a>和<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSetRGBFillColor" target="_blank" rel="external"><code>CGContextSetRGBFillColor</code></a>来创建和设置颜色。尽管CoreGraphics包含了对(通过创建其它色彩空间以及自定义色彩空间来创建颜色)的支持，我们还是不推荐这么做。绘制的代码应该一直使用RGB颜色。</p>
+<p>也可以使用CoreGraphics框架中的<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSetRGBStrokeColor" target="_blank" rel="noopener"><code>CGContextSetRGBStrokeColor</code></a>和<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSetRGBFillColor" target="_blank" rel="noopener"><code>CGContextSetRGBFillColor</code></a>来创建和设置颜色。尽管CoreGraphics包含了对(通过创建其它色彩空间以及自定义色彩空间来创建颜色)的支持，我们还是不推荐这么做。绘制的代码应该一直使用RGB颜色。</p>
 <h2 id="使用Quartz和UIKit绘制"><a href="#使用Quartz和UIKit绘制" class="headerlink" title="使用Quartz和UIKit绘制"></a>使用Quartz和UIKit绘制</h2><p>Quartz在iOS中是原生绘画技术的通用名。CoreGraphics框架是Quartz的核心，也是绘制内容最基础的接口。该框架提供了数据类型和函数可以操作以下内容:</p>
 <blockquote>
 <ul>
@@ -309,26 +393,26 @@ return 50;
 <li>改变和获得当前图形上下文的方法</li>
 </ul>
 </blockquote>
-<p>更多UIKit的方法和类，查看<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html#//apple_ref/doc/uid/TP40006955" target="_blank" rel="external">UIKit Framework Reference</a>。更多关于CoreGraphics框架的类型和函数，查看<a href="https://developer.apple.com/library/ios/documentation/CoreGraphics/Reference/CoreGraphics_Framework/index.html#//apple_ref/doc/uid/TP40007127" target="_blank" rel="external">Core Graphics Framework Reference</a></p>
-<h4 id="配置图形上下文"><a href="#配置图形上下文" class="headerlink" title="配置图形上下文"></a>配置图形上下文</h4><p>在调用<code>drawRect:</code>之前，view对象创建了一个图形上下文并设置为默认。该上下文只存在于<code>drawRect:</code>被调用的生命周期中。可以调用<code>UIGraphicsGetCurrentContext</code>来获得该图形上下文的指针。返回值是CGContextRef类型，将它传入CoreGraphics函数中修改当前图形状态。下表列举出不同方面的<code>图像状态</code>。完整函数请看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="external">CGContext Reference</a></p>
+<p>更多UIKit的方法和类，查看<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIKit_Framework/index.html#//apple_ref/doc/uid/TP40006955" target="_blank" rel="noopener">UIKit Framework Reference</a>。更多关于CoreGraphics框架的类型和函数，查看<a href="https://developer.apple.com/library/ios/documentation/CoreGraphics/Reference/CoreGraphics_Framework/index.html#//apple_ref/doc/uid/TP40007127" target="_blank" rel="noopener">Core Graphics Framework Reference</a></p>
+<h4 id="配置图形上下文"><a href="#配置图形上下文" class="headerlink" title="配置图形上下文"></a>配置图形上下文</h4><p>在调用<code>drawRect:</code>之前，view对象创建了一个图形上下文并设置为默认。该上下文只存在于<code>drawRect:</code>被调用的生命周期中。可以调用<code>UIGraphicsGetCurrentContext</code>来获得该图形上下文的指针。返回值是CGContextRef类型，将它传入CoreGraphics函数中修改当前图形状态。下表列举出不同方面的<code>图像状态</code>。完整函数请看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="noopener">CGContext Reference</a></p>
 <p><img src="http://ww1.sinaimg.cn/large/dae4fea2jw1f4ftkjixg0j214b0mkdp6.jpg" alt=""></p>
-<p>图形上下文拥有一个存放<code>图像状态</code>的栈。当Quartz创建了一个图形上下文，此时栈是空的。使用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSaveGState" target="_blank" rel="external"><code>CGContextSaveGState</code></a>将当前图形上下文状态压栈。随后，你可以通过更改<code>图像状态</code>来影响接下来的绘制操作，但不会影响栈中存储的操作。当你完成修改后，你可以调用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextRestoreGState" target="_blank" rel="external"><code>CGContextRestoreGState</code></a>弹出栈内上下文来返回之前的上下文状态。这样弹栈和压栈是一种返回之前状态的快速方法并且无需解开每个状态变化。(Pushing and popping graphics states in this manner is a fast way to return to a previous state and eliminates the need to undo each state change individually)。但这也是唯一用来存储一些状态的方式，例如裁剪路径，返回初始设置。<br>更多关于图形上下文的信息和使用它们的配置环境，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_context/dq_context.html#//apple_ref/doc/uid/TP30001066-CH203" target="_blank" rel="external"><code>Graphics Contexts</code></a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="external"><code>Quartz 2D Programming Guide</code></a></p>
+<p>图形上下文拥有一个存放<code>图像状态</code>的栈。当Quartz创建了一个图形上下文，此时栈是空的。使用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextSaveGState" target="_blank" rel="noopener"><code>CGContextSaveGState</code></a>将当前图形上下文状态压栈。随后，你可以通过更改<code>图像状态</code>来影响接下来的绘制操作，但不会影响栈中存储的操作。当你完成修改后，你可以调用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/c/func/CGContextRestoreGState" target="_blank" rel="noopener"><code>CGContextRestoreGState</code></a>弹出栈内上下文来返回之前的上下文状态。这样弹栈和压栈是一种返回之前状态的快速方法并且无需解开每个状态变化。(Pushing and popping graphics states in this manner is a fast way to return to a previous state and eliminates the need to undo each state change individually)。但这也是唯一用来存储一些状态的方式，例如裁剪路径，返回初始设置。<br>更多关于图形上下文的信息和使用它们的配置环境，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_context/dq_context.html#//apple_ref/doc/uid/TP30001066-CH203" target="_blank" rel="noopener"><code>Graphics Contexts</code></a>,<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="noopener"><code>Quartz 2D Programming Guide</code></a></p>
 <h4 id="创建并绘制路径"><a href="#创建并绘制路径" class="headerlink" title="创建并绘制路径"></a>创建并绘制路径</h4><p>路径是从一系列线条和贝塞尔曲线的基于向量的图形。UIKit拥有<code>UIRectFrame</code>和<code>UIRectFill</code>方法来绘制简单的路径，例如你view中的矩形。CoreGraphics 也提供了创造简单路径譬如矩形和椭圆的便捷函数。</p>
-<p>对于复杂的路径，需要使用<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIBezierPath_class/index.html#//apple_ref/occ/cl/UIBezierPath" target="_blank" rel="external"><code>UIBezierPath</code></a>来自己创建路径，或使用CoreGraphics框架中操作<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/c/tdef/CGPathRef" target="_blank" rel="external"><code>CGPathRef</code></a>的函数。尽管可以不用图形上下文来创建路径，路径中的点必须参考默认坐标系(ULO或LLO)，你仍旧需要使用图形上下文来渲染路径。</p>
+<p>对于复杂的路径，需要使用<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIBezierPath_class/index.html#//apple_ref/occ/cl/UIBezierPath" target="_blank" rel="noopener"><code>UIBezierPath</code></a>来自己创建路径，或使用CoreGraphics框架中操作<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/c/tdef/CGPathRef" target="_blank" rel="noopener"><code>CGPathRef</code></a>的函数。尽管可以不用图形上下文来创建路径，路径中的点必须参考默认坐标系(ULO或LLO)，你仍旧需要使用图形上下文来渲染路径。</p>
 <p>当绘制路径时，必须有当前上下文集。该图集可以是自定义view的(drawRect:中)上下文，位图上下文或者PDF上下文。坐标系决定了路径的渲染方式。<code>UIBezierPath</code>默认使用<code>ULO坐标系</code>，也就是说如果你的view被翻转使用了LLO坐标系，图形渲染结果可能会与预期不同。最好是指定点与用于渲染的图形上下文的当前坐标系原点绑定。</p>
 <blockquote>
 <ul>
-<li>即使遵循该规则，弧线仍然需要更多额外的工作。如果使用Core Graphics函数通过在ULO坐标系中定位点来创建路径，随后在UIKit的view中渲染路径，弧线的方向是不同的。查看更多相关信息<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW8" target="_blank" rel="external">Side Effects of Drawing with Different Coordinate Systems</a></li>
+<li>即使遵循该规则，弧线仍然需要更多额外的工作。如果使用Core Graphics函数通过在ULO坐标系中定位点来创建路径，随后在UIKit的view中渲染路径，弧线的方向是不同的。查看更多相关信息<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html#//apple_ref/doc/uid/TP40010156-CH14-SW8" target="_blank" rel="noopener">Side Effects of Drawing with Different Coordinate Systems</a></li>
 </ul>
 </blockquote>
-<p>在iOS中创建路径，更推荐使用<code>UIBezierPath</code>来代替<code>CGPath</code>方法，除非需要使用CoreGraphics的特性，例如在路径中添加椭圆。更多创建和渲染路径的方法，点击<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/BezierPaths/BezierPaths.html#//apple_ref/doc/uid/TP40010156-CH11-SW1" target="_blank" rel="external"><code>Drawing Shapes Using Bézier Paths</code></a></p>
-<p>更多关于使用UIBezierPath绘制路径的方法，查看<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/BezierPaths/BezierPaths.html#//apple_ref/doc/uid/TP40010156-CH11-SW1" target="_blank" rel="external"><code>Drawing Shapes Using Bézier Paths</code></a>。更多关于使用CoreGraphics绘制路径，例如如何指定点到复杂路径中，查看Quartz 2D中的<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_paths/dq_paths.html#//apple_ref/doc/uid/TP30001066-CH211" target="_blank" rel="external"><code>Paths</code></a>。更多关于创建路径的信息<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="external"><code>CGContext Reference</code></a>和<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/doc/uid/TP30000959" target="_blank" rel="external"><code>CGPath Reference</code></a></p>
+<p>在iOS中创建路径，更推荐使用<code>UIBezierPath</code>来代替<code>CGPath</code>方法，除非需要使用CoreGraphics的特性，例如在路径中添加椭圆。更多创建和渲染路径的方法，点击<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/BezierPaths/BezierPaths.html#//apple_ref/doc/uid/TP40010156-CH11-SW1" target="_blank" rel="noopener"><code>Drawing Shapes Using Bézier Paths</code></a></p>
+<p>更多关于使用UIBezierPath绘制路径的方法，查看<a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/BezierPaths/BezierPaths.html#//apple_ref/doc/uid/TP40010156-CH11-SW1" target="_blank" rel="noopener"><code>Drawing Shapes Using Bézier Paths</code></a>。更多关于使用CoreGraphics绘制路径，例如如何指定点到复杂路径中，查看Quartz 2D中的<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/dq_paths/dq_paths.html#//apple_ref/doc/uid/TP30001066-CH211" target="_blank" rel="noopener"><code>Paths</code></a>。更多关于创建路径的信息<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="noopener"><code>CGContext Reference</code></a>和<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGPath/index.html#//apple_ref/doc/uid/TP30000959" target="_blank" rel="noopener"><code>CGPath Reference</code></a></p>
 <h4 id="创建图案，渐变和阴影"><a href="#创建图案，渐变和阴影" class="headerlink" title="创建图案，渐变和阴影"></a>创建图案，渐变和阴影</h4><p>CoreGraphics框架包含了创建图案，渐变，阴影的功能。你可以使用这些来创建非黑白色并且使用使用它们填充你创建的路径。图案是从重复的图片或内容中创建出来的。渐变和阴影可提供不同的方案来创建颜色到颜色的平滑的过度。</p>
-<p>创建，使用图案，渐变和阴影的更多细节，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="external"><code>Quartz 2D Programming Guide</code></a></p>
+<p>创建，使用图案，渐变和阴影的更多细节，查看<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="noopener"><code>Quartz 2D Programming Guide</code></a></p>
 <h4 id="自定义坐标空间"><a href="#自定义坐标空间" class="headerlink" title="自定义坐标空间"></a>自定义坐标空间</h4><p>UIKit默认直接创建用于映射point到px的当前转换矩阵。尽管在绘制中完全不需要修改这个矩阵，但有时候更改该矩阵会更方便。</p>
 <p>当view第一次调用<code>drawRect:</code>时，CTM(当前转换矩阵)已经配置好所以坐标系原点与view的原点相匹配，X轴向右为正，Y轴向下为正。然而你可以通过添加缩放，旋转和转换因子来改变CTM从而改变大小，方向，并且默认坐标系的位置与底层的view或window有关。</p>
 <h5 id="使用坐标变换来提升绘制表现"><a href="#使用坐标变换来提升绘制表现" class="headerlink" title="使用坐标变换来提升绘制表现"></a>使用坐标变换来提升绘制表现</h5><p>修改CTM是绘制内容的一个基础技巧，因为它允许你重用路径，这样可能会减少绘制时的计算量。举个栗子，如果你想在(20,20)画一个正方形，需要创建一个路径移动到(20,20)随后绘制必要的线条。然而，如果你又想把正方形移动到(10,10)，可能需要重新创建新起点的路径。因为创建路径实在是一个消耗较大的操作，它会更倾向于创建一个原点在(0,0)的正方形，然后修改CTM使得正方形绘制在正确区域。</p>
-<p>在CoreGraphics框架中有两种方式可以修改CTM。可以使用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="external"><code>CGContext Reference</code></a>中定义的CTM操作函数立刻修改CTM。也可以创建一个<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGAffineTransform/index.html#//apple_ref/c/tdef/CGAffineTransform" target="_blank" rel="external"><code>CGAffineTransform</code></a>结构体，应用各种你想使用的变换，然后将这个变换应用到CTM中。使用仿射变换可以让你的组(group)变换随后立刻应用到CTM上。你也可以评估，倒置仿射变换并用它们来修正代码中的点，大小和矩形值。更多仿射变换信息<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="external"><code>Quartz 2D Programming Guide</code></a> 和 <a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGAffineTransform/index.html#//apple_ref/doc/uid/TP30000946" target="_blank" rel="external"><code>CGAffineTransform Reference</code></a></p>
+<p>在CoreGraphics框架中有两种方式可以修改CTM。可以使用<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGContext/index.html#//apple_ref/doc/uid/TP30000950" target="_blank" rel="noopener"><code>CGContext Reference</code></a>中定义的CTM操作函数立刻修改CTM。也可以创建一个<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGAffineTransform/index.html#//apple_ref/c/tdef/CGAffineTransform" target="_blank" rel="noopener"><code>CGAffineTransform</code></a>结构体，应用各种你想使用的变换，然后将这个变换应用到CTM中。使用仿射变换可以让你的组(group)变换随后立刻应用到CTM上。你也可以评估，倒置仿射变换并用它们来修正代码中的点，大小和矩形值。更多仿射变换信息<a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Conceptual/drawingwithquartz2d/Introduction/Introduction.html#//apple_ref/doc/uid/TP30001066" target="_blank" rel="noopener"><code>Quartz 2D Programming Guide</code></a> 和 <a href="https://developer.apple.com/library/ios/documentation/GraphicsImaging/Reference/CGAffineTransform/index.html#//apple_ref/doc/uid/TP30000946" target="_blank" rel="noopener"><code>CGAffineTransform Reference</code></a></p>
 <h5 id="翻转默认坐标系"><a href="#翻转默认坐标系" class="headerlink" title="翻转默认坐标系"></a>翻转默认坐标系</h5><p>Flipping in UIKit drawing modifies the backing CALayer to align a drawing environment having a LLO coordinate system with the default coordinate system of UIKit。如果仅使用UIKit来绘制，就不需要翻转CTM。然而如果是CoreGraphics和UIKit调用的图片I/O 函数混合使用，这时候翻转就派上用场了。</p>
 <p>如果你调用CoreGraphics绘制了图片或PDF文档，对象会在view的上下文中渲染的乱七八糟。你必须翻转CTM让图片和文稿正确显示。</p>
 <p>翻转绘制在CoreGraphics上下文中的对象以便于在UIKit的view中正确显示，修改CTM一共分两步。将原点变换到绘制区域的左上角，随后进行尺寸变换，修改y-coordinate为-1，代码如下:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CGContextSaveGState(graphicsContext);</span><br><span class="line">CGContextTranslateCTM(graphicsContext, 0.0, imageHeight);</span><br><span class="line">CGContextScaleCTM(graphicsContext, 1.0, -1.0);</span><br><span class="line">CGContextDrawImage(graphicsContext, image, CGRectMake(0, 0, imageWidth, imageHeight));</span><br><span class="line">CGContextRestoreGState(graphicsContext);</span><br></pre></td></tr></table></figure></p>
@@ -345,8 +429,8 @@ return 50;
 </blockquote>
 <hr>
 <h3 id="应用CoreAnimation效果"><a href="#应用CoreAnimation效果" class="headerlink" title="应用CoreAnimation效果"></a>应用CoreAnimation效果</h3><p>CoreAnimation是OC中提供快速便捷创造流动，实时的动画。CoreAnimation本身不是一个绘制技术，也就是说它不提供创建图形，图片或其他内容。相反的，它是一个操纵并展示由其他技术创建的内容。</p>
-<p>在很多案例中，付出一点就可以从CoreAnimation中获得好处。例如，UIView的很多属性(包括view的frame,center,color，opacity)可以配置在值变化时触发动画。你需要做一些事情来让UIkit知道你想执行这些动画，但它们却是自动为你运行的。更多关于如何触发view内置动画，查看<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/doc/uid/TP40006816-CH3-SW62" target="_blank" rel="external"><code>Animating Views</code></a>和<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/doc/uid/TP40006816" target="_blank" rel="external"><code>UIView Class Reference</code></a></p>
-<p>如果想查看更多高级动画教程，查看<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="external"><code>Core Animation Programming Guide</code></a></p>
+<p>在很多案例中，付出一点就可以从CoreAnimation中获得好处。例如，UIView的很多属性(包括view的frame,center,color，opacity)可以配置在值变化时触发动画。你需要做一些事情来让UIkit知道你想执行这些动画，但它们却是自动为你运行的。更多关于如何触发view内置动画，查看<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/doc/uid/TP40006816-CH3-SW62" target="_blank" rel="noopener"><code>Animating Views</code></a>和<a href="https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/index.html#//apple_ref/doc/uid/TP40006816" target="_blank" rel="noopener"><code>UIView Class Reference</code></a></p>
+<p>如果想查看更多高级动画教程，查看<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="noopener"><code>Core Animation Programming Guide</code></a></p>
 <h4 id="关于Layer"><a href="#关于Layer" class="headerlink" title="关于Layer"></a>关于Layer</h4><p>CoreAnimation的核心技术就是layer对象。layer是和view相似的轻量级对象，但它们实际上是一个模型对象。封装了几何、时间、视觉属性等你想展示的内容。</p>
 <blockquote>
 <ul>
@@ -355,23 +439,41 @@ return 50;
 <li>可以子类化CALayer并重载其中的显示方法。</li>
 </ul>
 </blockquote>
-<p>Layer相关信息请看<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="external"><code>Core Animation Programming Guide</code></a></p>
+<p>Layer相关信息请看<a href="https://developer.apple.com/library/ios/documentation/Cocoa/Conceptual/CoreAnimation_guide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40004514" target="_blank" rel="noopener"><code>Core Animation Programming Guide</code></a></p>
 ]]></content>
+      
+        <categories>
+            
+            <category> iOS绘制 </category>
+            
+        </categories>
+        
+        
+        <tags>
+            
+            <tag> 绘图 </tag>
+            
+            <tag> 翻译 </tag>
+            
+        </tags>
+        
     </entry>
     
     <entry>
       <title><![CDATA[Hello World]]></title>
       <url>http://jzy476731162.github.io/2016/05/30/hello-world/</url>
-      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
+      <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br><a id="more"></a></p>
 <h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
 <h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
 <h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
 <h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
+<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 ]]></content>
+      
+        
     </entry>
     
   

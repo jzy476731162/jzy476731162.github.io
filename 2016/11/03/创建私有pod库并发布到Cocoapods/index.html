@@ -84,14 +84,14 @@
 
 
 
-<meta name="description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController 
-探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
+<meta name="description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController  探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
+<meta name="keywords" content="CocoaPods Specs">
 <meta property="og:type" content="article">
 <meta property="og:title" content="创建私有pod库并发布到Cocoapods">
 <meta property="og:url" content="http://jzy476731162.github.io/2016/11/03/创建私有pod库并发布到Cocoapods/index.html">
 <meta property="og:site_name" content="CJ的小窝">
-<meta property="og:description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController 
-探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
+<meta property="og:description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController  探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
+<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5p1ajuj219w0ri13d.jpg">
 <meta property="og:image" content="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5okz79j2104100n7g.jpg">
 <meta property="og:image" content="http://ww3.sinaimg.cn/large/dae4fea2gw1f9fg5opqh9j20yo09umyv.jpg">
@@ -103,8 +103,7 @@
 <meta property="og:updated_time" content="2016-11-08T02:15:30.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="创建私有pod库并发布到Cocoapods">
-<meta name="twitter:description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController 
-探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
+<meta name="twitter:description" content="老哥们,小弟又来了!哈哈最近工作闲了下来,在等设备安装之后调试,因为觉得好玩闲来无事搞了搞pod,发布了个CJSegmentController  探究不知道各位对pod的理解是怎样,以前虽然常用Cocoapods,但是其实不太清楚原理。最近探究据我的理解是:pod中的各种三方库是存放在cocoapods管理的一个git项目中,当我们在新设备上安装pod的时候记得要setup一下么?执行pod s">
 <meta name="twitter:image" content="http://ww1.sinaimg.cn/large/dae4fea2gw1f9fg5p1ajuj219w0ri13d.jpg">
 
 
@@ -378,7 +377,7 @@
 <p>terminal中执行如下命令</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod repo add [Private Repo Name] [Github HTTPS clone URL]</span><br></pre></td></tr></table></figure>
 <p>Private Repo Name为本地私有仓库名称,而后者就是git上的地址啦。这里我的命令是下面这样的:</p>
-<font color="green">//pod repo add CJ <a href="https://github.com/jzy476731162/CJSpecs" target="_blank" rel="external">https://github.com/jzy476731162/CJSpecs</a></font>
+<font color="green">//pod repo add CJ <a href="https://github.com/jzy476731162/CJSpecs" target="_blank" rel="noopener">https://github.com/jzy476731162/CJSpecs</a></font>
 
 <p>随后pod在根目录中为我们生成了CJ这个目录,这个目录的git地址是你刚才配置的<code>私有仓库地址(remote repo)</code>。如果记不清后面会迷糊的。之前配置的时候我就没记清这个,饶了好大一个圈子…</p>
 <p>生成后是下图这个样子(但是请忽略掉上面两个文件夹。此步骤应该只生成了license和readme)</p>
@@ -391,7 +390,18 @@
 <font color="green">//pod lib create CJSegmentController</font>
 
 <p>我记得当时输入命令后,会提示给你要怎么创建pod</p>
-<p>&gt;<br>1.选择使用语言[Swift/ObjC]<br>&gt;<br>2.是否含有Demo[Y/N]<br>&gt;<br>3.好像是view自检..(这个记不太清了)<br>&gt;<br>4.选择test Framework [Specta / Kiwi / None] / (这个也没搞清楚都是什么样式,回头需要查询一下)</p>
+<blockquote>
+</blockquote>
+<p>1.选择使用语言[Swift/ObjC]</p>
+<blockquote>
+</blockquote>
+<p>2.是否含有Demo[Y/N]</p>
+<blockquote>
+</blockquote>
+<p>3.好像是view自检..(这个记不太清了)</p>
+<blockquote>
+</blockquote>
+<p>4.选择test Framework [Specta / Kiwi / None] / (这个也没搞清楚都是什么样式,回头需要查询一下)</p>
 <p>随后pod在CJSegment目录下生成了刚才输入的CJSegmentController文件夹,下图</p>
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5otq9sj21kw0kigqb.jpg" alt=""></p>
 <p>到此pod创建完毕,该进行下一步了</p>
@@ -404,7 +414,7 @@
 <p>然后我们来进行下一步,创建该pod的仓库。</p>
 <p>前文提到了pod是根据podSpec文件中的resouce tag来寻找该版本的pod,所以如果想发布到pod上这里用public git。</p>
 <p>我去github上创建了一个空git 命名为CJSegmentController,同样没有license/readme原理同上,gitignore可以选填。<br>改好readme文件推到该git上。</p>
-<p>git在这里不多说了。如果老哥对git不熟请移步<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="external">廖老师的git教程</a>,个人认为廖老师的教程很好,但用好重要还是在于多练。</p>
+<p>git在这里不多说了。如果老哥对git不熟请移步<a href="http://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖老师的git教程</a>,个人认为廖老师的教程很好,但用好重要还是在于多练。</p>
 <p>此时如果到CJ/ 和CJSegmentController/目录下使用<code>git remote -v</code>查看git源发现这两个git地址应该是不一样的。因为前者是私人仓库的地址,后者是你创建的三方库的地址。之前就迷糊在了这里,强行坑了自己半天。</p>
 <p>下一步,修改podSpec即pod配置文件,如果老哥使用了xib的话。xib是在资源文件中的。可以扔到Assets中,解注s.resource = “pod/Assets/xx.xib”,也可以放到Classes中。其他的字段也没什么好说的。相信老哥会用pod都明白是什么意思。<code>*.{h,m}</code>是一个类似正则表达式的字符串，表示匹配所有以.h和.m为扩展名的文件。例如<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">s.source_files  = &quot;CJSegmentController/Classes/**/*.&#123;h,m&#125;&quot;</span><br></pre></td></tr></table></figure></p>
 <p>我的podspec如下:</p>
@@ -418,15 +428,16 @@
 <p>The following build commands failed:<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard<br>CompileStoryboard /Users/CarlJi/Documents/job/CJSegmentController/CJSegmentController/SegmentController.storyboard</p>
 <ul>
 <li>ERROR | license: Sample license type.</li>
-<li>ERROR | [iOS] file patterns: The <code>source_files</code> pattern did not match any file.<br> #s.license      = “MIT (example)”<br> s.license      = { :type =&gt; “MIT”, :file =&gt; “LICENSE” }</li>
+<li>ERROR | [iOS] file patterns: The <code>source_files</code> pattern did not match any file.</li>
 </ul>
 </blockquote>
+<p>   #s.license      = “MIT (example)”<br>   s.license      = { :type =&gt; “MIT”, :file =&gt; “LICENSE” }</p>
 <p>   这个就是我之前用Storyboard报错,提示没有找到这个SB文件,这就说明podSpec文件中的source那里出了问题,去改吧~~</p>
 <p>   如果验证无误就可以进行下一步。 将CJSegmentController push到remote上,<a href="# 打Tag">打好tag</a>。 我设置的tag是0.1.0,你可以按你自己的喜好0.0.1/1.0.0都可以。</p>
 <p>   terminal执行校验操作:<br>   <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pod spec lint CJSegmentController.podspec</span><br></pre></td></tr></table></figure></p>
 <p>   成功后CJ(私人仓库)路径下会出现一个CJSegmentController文件夹(就是我们刚创建的),里面有存储podspec文件,跟master中的形式相同。</p>
 <p>   至此私有仓库搭建完成。在podfile中使用cocoapods/master那行的格式来增加私有仓库的git地址即可。</p>
-<h1 id="发布到Cocoapods"><a href="#发布到Cocoapods" class="headerlink" title="发布到Cocoapods"></a>发布到Cocoapods</h1><p><a href="http://www.cnblogs.com/wengzilin/p/4742530.html" target="_blank" rel="external">这个发布博客很不错</a></p>
+<h1 id="发布到Cocoapods"><a href="#发布到Cocoapods" class="headerlink" title="发布到Cocoapods"></a>发布到Cocoapods</h1><p><a href="http://www.cnblogs.com/wengzilin/p/4742530.html" target="_blank" rel="noopener">这个发布博客很不错</a></p>
 <p>目前cocoapods使用trunk来管理大家pod的发布。</p>
 <p>1.注册trunk<br>pod有最低版本限制,如果希望设备上有多版本pod请查看之前的Cocoapods文章安装RVM。</p>
 <p>注册trunk</p>
@@ -447,7 +458,7 @@
 <ul>
 <li><p>验证你的podspec文件是否合法。在trunk方式之前我们一般用“pod lib lint”命令进行验证。</p>
 </li>
-<li><p>上传podspec文件到trunk服务器(其实最终也会自动添加到<a href="https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull" target="_blank" rel="external">https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull</a> request的繁琐操作)</p>
+<li><p>上传podspec文件到trunk服务器(其实最终也会自动添加到<a href="https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull" target="_blank" rel="noopener">https://github.com/CocoaPods/Specs中，只是使用trunk方式省去了以前先fork在pull</a> request的繁琐操作)</p>
 </li>
 <li><p>将你上传的podspec文件转成json格式文件。</p>
 </li>
@@ -456,7 +467,7 @@
 <p>告诉你的朋友吧!</p>
 <p>如果要更新你的pod版本.需要到pod路径下更改代码,修改git的tag值并且在podspec中做出对应修改,然后校验,trunk push。</p>
 <blockquote>
-<p><a href="https://github.com/jzy476731162/CJSegmentController" target="_blank" rel="external">CJSegmentController地址</a><br>是一个ContainerSegmentViewController,解决了不同子ViewController上拥有不同的barButtonItem状态但显示在parentVC的navigationBar上异常的问题。</p>
+<p><a href="https://github.com/jzy476731162/CJSegmentController" target="_blank" rel="noopener">CJSegmentController地址</a><br>是一个ContainerSegmentViewController,解决了不同子ViewController上拥有不同的barButtonItem状态但显示在parentVC的navigationBar上异常的问题。</p>
 </blockquote>
 
       
@@ -512,6 +523,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/26/坑/" rel="prev" title="坑">
+                坑 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -583,7 +598,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

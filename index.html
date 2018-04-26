@@ -84,15 +84,13 @@
 
 
 
-<meta name="description">
 <meta property="og:type" content="website">
 <meta property="og:title" content="CJ的小窝">
 <meta property="og:url" content="http://jzy476731162.github.io/index.html">
 <meta property="og:site_name" content="CJ的小窝">
-<meta property="og:description">
+<meta property="og:locale" content="zh-Hans">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="CJ的小窝">
-<meta name="twitter:description">
 
 
 
@@ -272,6 +270,117 @@
             
               
                 
+                <a class="post-title-link" href="/2018/04/26/坑/" itemprop="url">
+                  坑
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2018-04-26T10:30:01+08:00" content="2018-04-26">
+              2018-04-26
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2018/04/26/坑/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2018/04/26/坑/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+             <span id="/2018/04/26/坑/" class="leancloud_visitors" data-flag-title="坑">
+               &nbsp; | &nbsp;
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               <span class="post-meta-item-text">阅读次数 </span>
+               <span class="leancloud-visitors-count"></span>
+              </span>
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><a href="https://juejin.im/post/5adf1831518825673b61aa65" target="_blank" rel="noopener">使用 NSUserDefaults 存储字典的一个坑</a>:</p>
+<p>UserDefaults中存储的中能是Property List Objects</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="//schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/11/03/创建私有pod库并发布到Cocoapods/" itemprop="url">
                   创建私有pod库并发布到Cocoapods
                 </a>
@@ -357,8 +466,8 @@
 <p><img src="http://ww4.sinaimg.cn/large/dae4fea2gw1f9fg5okz79j2104100n7g.jpg" alt=""></p>
 <p>这基本也就是podspec(即该库该版本的配置信息),上面几条估计大家都能看明白,然后看到<code>&#39;source&#39;</code>这条,what means?? git即为AFN公布的git地址。可以看到在github上。那下面的tag是什么?这里就是至关重要的一点,<code>tag</code>,我想git熟练的老哥们应该知道tag是个啥。tag就是标签嘛。一般在某一产品发布之后在git中打上tag可以便于我们寻找哪个版本app的位置。</p>
 <h2 id="打Tag"><a href="#打Tag" class="headerlink" title="打Tag"></a>打Tag</h2><p>切换到当前需要打tag的git节点下,tag命令如下:</p>
-<p>git tag -a v1.0.3 -m ‘release version’ <font color=green>//创建一个名为1.0.3的tag(-m为可选)</font></p>
-<p>git push –tags        <font color=green>//将tag推到remote</font></p>
+<p>git tag -a v1.0.3 -m ‘release version’ <font color="green">//创建一个名为1.0.3的tag(-m为可选)</font></p>
+<p>git push –tags        <font color="green">//将tag推到remote</font></p>
 <p>然后pod根据配置文件中的这个tag值去你的git source中查找对应版本的三方库。</p>
 <p>原理就讲到这里,还有几个重要的标签,我们接下来再讲。</p>
           <div class="post-more-link text-center">
@@ -893,14 +1002,13 @@ return 50;
 
       
         
-          <p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html">原文链接</a><br><!--[TOC]--></p>
-<h2 id="iOS绘图思想"><a href="#iOS绘图思想" class="headerlink" title="iOS绘图思想"></a>iOS绘图思想</h2><p>高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：<code>openGL</code>或<code>原生渲染(Quartz，Core Animation，UIkit)</code>。本文描述的是用原生渲染(如果您想学习OpenGL绘图，<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793">请看链接</a>)</p>
+          <p><a href="https://developer.apple.com/library/ios/documentation/2DDrawing/Conceptual/DrawingPrintingiOS/GraphicsDrawingOverview/GraphicsDrawingOverview.html" target="_blank" rel="noopener">原文链接</a><br><!--[TOC]--></p>
+<h2 id="iOS绘图思想"><a href="#iOS绘图思想" class="headerlink" title="iOS绘图思想"></a>iOS绘图思想</h2><p>高质量图像是应用UI中重要的一部分，提供高质量图像不仅会让应用看起来更棒，还会使它看起来像原生系统的扩展。iOS系统提供两种基础的方式来创建高质量图像：<code>openGL</code>或<code>原生渲染(Quartz，Core Animation，UIkit)</code>。本文描述的是用原生渲染(如果您想学习OpenGL绘图，<a href="https://developer.apple.com/library/ios/documentation/3DDrawing/Conceptual/OpenGLES_ProgrammingGuide/Introduction/Introduction.html#//apple_ref/doc/uid/TP40008793" target="_blank" rel="noopener">请看链接</a>)</p>
 <p>Quartz是主要的绘画接口，提供支持如：基于路径的绘图，抗锯齿渲染，渐变填充图案，图片，颜色，坐标空间变换，以及PDF创建、显示、解析。UIKit提供了通过OC封装的文字艺术(line art)，Quartz 图片以及颜色处理。Core Animation为UIKit中view的property的基础动画变换提供了底层支持并且可以用来实现自定义动画。</p>
 <p>本章节提供了iOS应用绘画的过程概述，伴随着每一种绘画技术都会有特定的绘画技巧。你将找到在iOS平台上优化绘画代码的提示和指导。</p>
 <blockquote>
 <p>不是所有的UIkit类都是线程安全的。在主线程外的其他线程中执行绘画操作时请先检查文档。</p>
 </blockquote>
-<h2 id=""><a href="#" class="headerlink" title=""></a>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/06/02/iOS绘图思想/#more" rel="contents">
               阅读全文 &raquo;
@@ -1012,7 +1120,7 @@ return 50;
 
       
         
-          <p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.<br>
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.<br>
           <div class="post-more-link text-center">
             <a class="btn" href="/2016/05/30/hello-world/#more" rel="contents">
               阅读全文 &raquo;
@@ -1085,7 +1193,7 @@ return 50;
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-count">7</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
